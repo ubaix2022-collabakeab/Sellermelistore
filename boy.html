@@ -1,0 +1,4247 @@
+<!DOCTYPE html>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>stok.melistore.my.id</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins', sans-serif;
+}
+
+body{
+    background:#f9a8d4;
+    padding:20px;
+}
+.menu-container {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 10px 0;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+}
+
+.menu-container::-webkit-scrollbar {
+    display: none;
+}
+
+.menu-btn {
+    min-width: 120px;
+    flex-shrink: 0;
+}
+
+.section-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    cursor:pointer;
+    user-select:none;
+}
+
+.section-toggle{
+    font-size:12px;
+    font-weight:600;
+    opacity:.9;
+}
+.copyright{
+    text-align:center;
+    padding:20px 10px 90px;
+    margin-top:20px;
+    color:#ff4f8b;
+    font-size:14px;
+    font-weight:600;
+}
+.container{
+    max-width:900px;
+    margin:auto;
+}
+
+/* WRAP CARD STOK */
+#privateResult,
+#result,
+#circleResult{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
+    margin-top:15px;
+
+
+
+
+}
+
+.header{
+    background:linear-gradient(135deg,#ff4f8b,#ff2f75);
+    color:white;
+    padding:28px;
+    border-radius:24px;
+    text-align:center;
+    margin-bottom:20px;
+    box-shadow:0 10px 25px rgba(255,79,139,.25);
+}
+
+.header h1{
+    font-size:40px;
+    font-weight:800;
+    animation:logoFloat 3s ease-in-out infinite;
+}
+.header h1{
+    position:relative;
+    display:inline-block;
+    overflow:hidden;
+}
+
+.header h1::after{
+    content:'';
+    position:absolute;
+    top:0;
+    left:-150%;
+    width:50%;
+    height:100%;
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.8),
+        transparent
+    );
+    transform:skewX(-25deg);
+    animation:shineLogo 4s infinite;
+}
+
+@keyframes shineLogo{
+    100%{
+        left:200%;
+    }
+}
+.header p{
+    font-size:16px;
+    margin-top:5px;
+}
+.section-header{
+    background:linear-gradient(135deg,#ff4f8b,#ff2f75);
+    color:white;
+    padding:14px;
+    border-radius:18px;
+    text-align:center;
+    margin-bottom:15px;
+    font-size:18px;
+    font-weight:700;
+    box-shadow:0 4px 12px rgba(255,79,139,.2);
+}
+
+.running-text{
+    width:100%;
+    overflow:hidden;
+    white-space:nowrap;
+    margin-top:8px;
+}
+
+.running-text span{
+    display:inline-block;
+    color:white;
+    font-size:16px;
+    font-weight:600;
+    animation:marquee 9s linear infinite;
+}
+
+@keyframes marquee{
+    0%{
+        transform:translateX(100%);
+    }
+    100%{
+        transform:translateX(-100%);
+    }
+}
+
+
+
+.menu{
+    display:flex;
+    gap:10px;
+    margin-bottom:20px;
+
+    overflow-x:auto;
+    overflow-y:hidden;
+    white-space:nowrap;
+
+    scrollbar-width:none;
+    -webkit-overflow-scrolling:touch;
+}
+.menu-wrapper{
+    position:relative;
+}
+
+.scroll-arrow{
+    position:absolute;
+    right:-5px;
+    top:50%;
+    transform:translateY(-50%);
+    font-size:28px;
+    color:#ff5c8a;
+    font-weight:bold;
+    pointer-events:none;
+}
+
+@keyframes blink{
+    50%{
+        opacity:.3;
+    }
+}
+.menu::-webkit-scrollbar{
+    display:none;
+}
+
+.menu button{
+    flex:none;
+    min-width:95px;
+    height:70px;
+    border:none;
+    border-radius:16px;
+    background:#fff;
+    box-shadow:0 2px 8px rgba(0,0,0,.08);
+    font-size:13px;
+    font-weight:600;
+}
+
+.menu button:first-child{
+    min-width:140px;
+}
+.menu button.active{
+    background:#ff5c8a;
+    color:white;
+
+}
+#nomorinput:focus{
+border-color:#ff5c8a;
+}
+
+#nomorinput::placeholder{
+color:#b0b0b0;
+line-height:1.8;
+}
+.tab{
+    display:none;
+    background:white;
+    padding:20px;
+    border-radius:16px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.08);
+}
+
+.tab.active{
+    display:block;
+}
+
+.input{
+    width:100%;
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:12px;
+    margin-top:10px;
+    margin-bottom:15px;
+}
+
+.btn{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:12px;
+    background:#111;
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
+}
+.btn-order{
+width:100%;
+margin-top:10px;
+padding:10px;
+border:none;
+border-radius:8px;
+background:#25D366;
+color:white;
+font-weight:bold;
+cursor:pointer;
+}
+
+.btn-order.disabled{
+background:#999;
+cursor:not-allowed;
+}
+#areaTable{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:20px;
+    overflow:hidden;
+    border-radius:12px;
+    background:white;
+}
+
+#areaTable th{
+    background:#e8436f;
+    color:white;
+    padding:12px;
+    font-size:14px;
+    text-align:left;
+}
+
+#areaTable td{
+    padding:12px;
+    border-bottom:1px solid #eee;
+    font-size:14px;
+}
+
+#areaTable tr:nth-child(even){
+    background:#f9f9f9;
+}
+
+#areaTable tr:hover{
+    background:#f1f5f9;
+}
+.wa-btn{
+display:block;
+width:100%;
+text-align:center;
+background:linear-gradient(135deg,#25D366,#1faa52);
+color:white;
+text-decoration:none;
+padding:12px;
+border-radius:14px;
+font-size:14px;
+font-weight:700;
+margin-top:12px;
+box-shadow:0 4px 12px rgba(37,211,102,.3);
+}
+.table-scroll{
+max-height:225px;
+overflow-y:auto;
+}
+
+#areaTable{
+width:100%;
+border-collapse:collapse;
+margin-top:0;
+}
+#areaTable thead th{
+position:sticky;
+top:0;
+z-index:10;
+background:#e8436f;
+}
+/* CARD STOK */
+.card{
+    background:#fff;
+    border-radius:24px;
+    overflow:hidden;
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
+    transition:.25s;
+}
+
+.card:hover{
+    transform:translateY(-4px);
+
+}
+/* HEADER CARD */
+.top{
+    background:linear-gradient(
+        135deg,
+        #ff5c8a,
+        #ff2f75
+    );
+    color:white;
+    padding:14px;
+}
+.section-header{
+    position:relative;
+    overflow:hidden;
+}
+
+.section-header::before{
+    content:'';
+    position:absolute;
+    top:0;
+    left:-100%;
+    width:50%;
+    height:100%;
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.4),
+        transparent
+    );
+    animation:shine 3s infinite;
+}
+
+@keyframes shine{
+    100%{
+        left:150%;
+    }
+}
+/* HARGA */
+.top h2{
+font-size:27px;
+font-weight:700;
+line-height:1;
+}
+/* STATUS */
+.top p{
+    margin-top:5px;
+    font-size:12px;
+    font-weight:bold;
+}
+
+/* ISI CARD */
+.content{
+    padding:14px;
+}
+
+/* ROW AREA */
+.row{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:8px;
+    font-size:15px;
+}
+
+/* TEXT GB */
+.gb{
+    font-weight:bold;
+}
+.header{
+    position:relative;
+}
+
+.jam-realtime{
+    position:absolute;
+    top:-8px;
+    right:-8px;
+    background:#ff6aa2;
+    color:#fff;
+    padding:6px 12px;
+    border-radius:20px;
+    font-size:12px;
+    font-weight:bold;
+    box-shadow:0 4px 10px rgba(0,0,0,.15);
+    z-index:999;
+}
+/* MOBILE */
+
+
+
+.result-item{
+    background:#111827;
+    color:white;
+    padding:15px;
+    border-radius:14px;
+    margin-top:15px;
+}
+
+.xlku-item{
+    margin-top:12px;
+}
+.quota-item{
+    background:#1f2937;
+    border-radius:12px;
+    margin-top:10px;
+    overflow:hidden;
+}
+.xlku-top{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:8px;
+    gap:10px;
+}
+
+.xlku-label{
+    font-size:13px;
+    color:white;
+}
+
+.xlku-value{
+    font-size:12px;
+    color:#93c5fd;
+}
+
+.xlku-progress{
+    width:100%;
+    height:8px;
+    background:#374151;
+    border-radius:999px;
+    overflow:hidden;
+}
+.xlku-bar{
+    height:100%;
+    border-radius:999px;
+
+    background:linear-gradient(
+        90deg,
+        #22c55e,
+        #4ade80
+    );
+
+    transition:.3s;
+}
+
+  #floatingNote{
+    position:fixed;
+    bottom:15px;
+    left:50%;
+    transform:translateX(-50%);
+    width:90%;
+    max-width:600px;
+    background:#111827;
+    color:white;
+    padding:10px;
+    border-radius:15px;
+    overflow:hidden;
+    z-index:9999;
+    box-shadow:0 6px 20px rgba(0,0,0,.2);
+}
+#floatingNote span{
+    display:inline-block;
+    white-space:nowrap;
+    animation:noteRun 35s linear infinite;
+}
+
+@keyframes noteRun{
+    from{transform:translateX(100%);}
+    to{transform:translateX(-100%);}
+}
+.operator-box{
+background:#fff;
+border-radius:15px;
+margin-bottom:12px;
+overflow:hidden;
+box-shadow:0 2px 8px rgba(0,0,0,.1);
+}
+
+.operator-header{
+padding:15px;
+font-weight:bold;
+display:flex;
+justify-content:space-between;
+cursor:pointer;
+background:#f8f8f8;
+}
+
+.operator-content{
+display:none;
+padding:10px;
+}
+
+.sub-menu{
+padding:15px;
+margin-bottom:8px;
+background:#f3f4f6;
+border-radius:10px;
+cursor:pointer;
+font-weight:600;
+}
+#providerMenu{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:10px;
+margin-bottom:15px;
+}
+
+#providerMenu button{
+padding:14px;
+border:none;
+border-radius:12px;
+font-weight:bold;
+background:#f3f4f6;
+color:#111;
+transition:.2s;
+}
+
+#providerMenu button.active{
+color:#ff5c8a;
+font-weight:700;
+}
+
+#kategoriMenu{
+display:flex;
+gap:10px;
+margin-bottom:15px;
+
+overflow-x:auto;
+overflow-y:hidden;
+
+white-space:nowrap;
+padding-bottom:5px;
+
+scrollbar-width:none;
+}
+
+#kategoriMenu::-webkit-scrollbar{
+display:none;
+}
+#kategoriMenu button{
+    height:45px;
+    min-width:120px;
+    font-size:6px;
+    font-weight:600;
+    border-radius:50px;
+}
+
+#kategoriMenu button.active{
+background:#ff5c8a;
+color:white;
+}
+
+#kategoriMenu button:hover{
+background:#ff5c8a;
+color:white;
+}
+.product-name{
+    font-size:18px;
+    font-weight:700;
+    color:#fff;
+}
+
+.masa-aktif{
+    display:inline-block;
+    background:rgba(255,255,255,.2);
+    padding:3px 8px;
+    border-radius:20px;
+    font-size:11px;
+    margin-top:5px;
+}
+
+#kategoriMenu button.active{
+background:#ff5c8a;
+color:white;
+}
+#premiumMenu{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:10px;
+margin-bottom:15px;
+}
+
+#premiumMenu button{
+height:60px;
+border:none;
+border-radius:12px;
+font-weight:bold;
+background:#f3f4f6;
+cursor:pointer;
+}
+
+#premiumMenu button.active{
+background:#ff5c8a;
+color:white;
+}
+#produkGrid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:10px;
+}
+#produkGrid .card{
+    display:flex;
+    flex-direction:column;
+    height:100%;
+}
+
+#produkGrid .content{
+    display:flex;
+    flex-direction:column;
+    height:100%;
+}
+.premium-order{
+    width:85%;
+    margin:15px auto 0;
+    text-align:center;
+    background:#25D366;
+    color:white;
+    text-decoration:none;
+    padding:12px;
+    border-radius:12px;
+    font-weight:700;
+}
+
+.premium-card.available .card-header{
+    background:#009900; /* sama seperti Privat Umum */
+    color:#fff;
+}
+.premium-card.empty .card-header{
+    background:#9e9e9e;
+    color:#fff;
+}
+
+.premium-desc{
+    height:60px;
+    overflow-y:auto;
+    text-align:center;
+    color:#666;
+    font-size:13px;
+    line-height:1.5;
+    margin-bottom:15px;
+    padding:0 5px;
+}
+
+.premium-desc::-webkit-scrollbar{
+    width:3px;
+}
+
+.premium-desc::-webkit-scrollbar-thumb{
+    background:#ccc;
+    border-radius:10px;
+}
+@media(max-width:768px){
+
+    #privateResult,
+    #result,
+    #circleResult{
+        grid-template-columns:1fr 1fr;
+    }
+
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- HEADER -->
+<div class="header">
+    <h1>tb</h1>
+  <div id="jamRealtime" class="jam-realtime">00:00:00 WIB</div>
+<div class="running-text">
+    <span>📦 Panel Reseller XL - AXIS & Lainnya • Update Stok Real Time • Silahkan di Order • 📦</span>
+</div>
+</div>
+  <!-- ORDER WA -->
+<a
+href="https://whatsapp.com/channel/0029Vb7EGcPKgsNnbT9KfO0L"
+target="_blank"
+class="wa-btn">
+    📢 Join Bersama Kami
+</a>
+    
+    <!-- MENU -->
+<div class="menu-wrapper">
+
+<div class="menu">
+<button class="active" onclick="openTab('stok',this)">
+📦<br>Stok Paket Xl/Axis
+</button>
+
+<button onclick="openTab('nomor',this)">
+📱<br>Cek Nomor
+</button>
+
+<button onclick="openTab('area',this)">
+📍<br>Cek Area
+</button>
+
+<!-- ALL Operator disembunyikan -->
+<!--
+<button onclick="openTab('operator',this)">
+📡<br>ALL Operator
+</button>
+-->
+
+<!-- Premium disembunyikan -->
+<!--
+<button onclick="openTab('premium',this)">
+👑<br>Premium
+</button>
+-->
+</div>
+
+
+
+    <!-- TAB STOK -->
+<!-- TAB STOK -->
+
+<div class="tab active" id="stok">
+
+    <div class="section-header" onclick="toggleSection('result',this)">
+        <span>🌐 STOK UMUM</span>
+        <span class="section-toggle">Sembunyikan</span>
+    </div>
+
+    <div class="container" id="result">
+        Loading...
+    </div>
+
+    <br><br>
+
+    <div class="section-header" onclick="toggleSection('privateResult',this)">
+        <span>📦 STOK PRIVAT</span>
+        <span class="section-toggle">Sembunyikan</span>
+    </div>
+
+    <div class="container" id="privateResult">
+        Loading...
+    </div>
+
+    <br><br>
+
+    <div class="section-header" onclick="toggleSection('circleResult',this)">
+        <span>👥 STOK CIRCLE XL</span>
+        <span class="section-toggle">Sembunyikan</span>
+    </div>
+
+    <div class="container" id="circleResult">
+        Loading...
+    </div>
+
+</div>
+
+
+  
+    <div class="tab" id="operator">
+
+<div id="providerMenu">
+
+<button onclick="showProvider('xl',this)">XL</button>
+<button onclick="showProvider('telkomsel',this)">TELKOMSEL</button>
+<button onclick="showProvider('axis',this)">AXIS</button>
+<button onclick="showProvider('indosat',this)">INDOSAT</button>
+<button onclick="showProvider('tri',this)">TRI</button>
+<button onclick="showProvider('smartfren',this)">SMARTFREN</button>
+</div>
+
+<div id="kategoriMenu" style="display:none"></div>
+
+<div id="produkContainer">
+
+<div style="
+text-align:center;
+padding:30px;
+color:#666;
+font-weight:bold;
+">
+Pilih operator terlebih dahulu
+</div>
+
+</div>
+
+</div> <!-- PENUTUP TAB OPERATOR -->
+
+<!-- TAB CEK NOMOR -->
+<div class="tab" id="nomor">
+
+<div style="margin-bottom:15px;">
+    <div style="
+        font-size:24px;
+        font-weight:700;
+        color:#111;
+    ">
+        Nomor HP
+    </div>
+
+    <div style="
+        font-size:13px;
+        color:#888;
+        margin-top:3px;
+    ">
+        pisahkan dengan Enter untuk multi cek
+    </div>
+</div>
+
+<textarea
+id="nomorinput"
+oninput="filterNomor(this)"
+placeholder="08123456789
+08987654321
+08111222333"
+style="
+width:100%;
+height:180px;
+padding:16px 20px;
+border:2px solid #e5e5e5;
+border-radius:20px;
+font-size:18px;
+line-height:1.8;
+outline:none;
+resize:vertical;
+margin-bottom:15px;
+"></textarea>
+
+<button
+class="btn"
+onclick="cekKuota()">
+➜ Cek Kuota
+</button>
+<!-- Menu Cek Circle dan Kuota Circle disembunyikan -->
+<div style="display:none;">
+<button class="btn" onclick="cekCircleMember()">👥 Cek Circle</button>
+<button class="btn" onclick="cekCircleKuota()">📶 Kuota Circle</button>
+</div>
+<div id="resultBox"
+style="margin-top:20px;">
+</div>
+
+
+</div>
+
+
+
+    <!-- TAB CEK AREA -->
+<div class="tab" id="area">
+
+    <h2>Cek Area</h2>
+
+    <input
+    type="text"
+    id="nomorArea"
+    class="input"
+    placeholder="cari Kota atau kabupaten">
+
+    <button class="btn" onclick="cekArea()">
+        Cek AREA
+    </button>
+
+
+<div class="table-scroll">
+
+<table id="areaTable">
+
+<thead>
+<tr>
+<th>Kota/Kabupaten</th>
+<th>Area Akrab</th>
+</tr>
+</thead>
+
+<tbody id="tableBody">
+</tbody>
+
+</table>
+
+</div>
+
+</div> <!-- PENUTUP TAB AREA -->
+
+
+
+
+<div class="tab" id="premium">
+
+<div class="container">
+
+<h3 class="section-title">
+👑 AKUN PREMIUM
+</h3>
+
+<div id="premiumMenu">
+
+<button onclick="showPremium('netflix')">
+NETFLIX
+</button>  
+    <button onclick="showPremium('gemini')">
+GEMINI AI
+    </button>
+
+<button onclick="showPremium('youtube')">
+YOUTUBE
+</button>
+
+<button onclick="showPremium('canva')">
+CANVA
+</button>
+<button onclick="showPremium('viu')">
+VIU
+</button>
+
+<button onclick="showPremium('spotify')">
+SPOTIFY
+</button>
+
+<button onclick="showPremium('vidio')">
+VIDIO
+</button>
+
+<button onclick="showPremium('chatgpt')">
+CHATGPT
+</button>
+
+</div>
+
+<div id="premiumContainer">
+
+<p style="text-align:center;color:#666">
+Pilih akun premium terlebih dahulu
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+/* =========================
+   KONTROL STOK PRIVAT
+========================= */
+const stokPrivat = {
+    "47K":0,
+    "60K":0,
+    "64K":1,
+    "70K":0,
+    "75K":0,
+    "85K":1,
+    "90K":0,
+    "100K":1,
+    "105K":1,
+    "115K":1,
+    "130K":1,
+
+
+    "78Kv3":1,
+    "98K":0,
+    "53Kv3":0,
+    "88Kv3":1,
+    "105Kv3":1,
+    "68Kv3":0,
+    "80Kv3":0,
+}
+/* =========================
+   TAMPILKAN / SEMBUNYIKAN PRODUK
+========================= */
+const produkAktif = {
+    
+    
+    
+    
+ /*supermini*/
+    XDA13:1,
+    /*mini*/
+    XDA31:1,
+    /*big*/
+    XDA38:1,
+  /*megabig*/
+    XDA88:1,
+   /*megabig*/
+    XDA64:1,
+        
+/*supermini*/
+    XLA14:1,
+/*supermini2*/
+    XLA20:1,
+    /*mini 2*/
+    XLA26:1,
+    /*mini*/
+    XLA32:1,
+    
+    /*big*/
+    XLA39:1,
+    /*big2*/
+    XLA48:1,
+    /*jumbov2*/
+    XLA55:1,
+    /*megabig2*/
+    XLA64:1,
+    /*prime*/
+    XLA77:1,
+    /*megabig*/
+    XLA89:1,
+    /*jumbo*/
+    XLA65:1,
+    
+
+    XDA19:1,
+    XDA25:1,
+    XDA47:1,
+    XDA55:1,
+    XDA63:1,
+    XDA65:1,
+};
+/* =========================
+   TAMPIL varian
+========================= */
+const tampilPrivat = {
+    "47K":1,
+    "60K":0,
+    "64K":1,
+    "70K":0,
+    "75K":0,
+    "85K":1,
+    "90K":0,
+    "100K":1,
+    "105K":1,
+    "115K":1,
+    "130K":1,
+
+
+
+    "78Kv3":0,
+    "98K":0,
+    "53Kv3":0,
+    "88Kv3":0,
+    "105Kv3":0,
+    "68Kv3":0,
+    "80Kv3":0,
+};
+  const preOrderAktif = {
+    "47K":"t",
+    "60K":"t",
+    "64K":"t",
+    "70K":"t",
+    "75K":"t",
+    "85K":"t",
+    "90K":"t",
+    "100K":"t",
+    "105K":"a",
+    "115K":"a",
+    "130K":"t",
+
+    "78Kv3":"t",
+    "98K":"t",
+    "53Kv3":"t",
+    "88Kv3":"t",
+    "105Kv3":"t",
+    "68Kv3":"t",
+    "80Kv3":"t",
+};
+const preOrderUmumAktif = {
+  /*supermini*/
+    XDA13:"t",
+    XDA19:"t",
+    XDA25:"t",
+    XDA31:"t",
+    XDA38:"t",
+    XDA47:"t",
+    XDA55:"t",
+    XDA63:"t",
+    XDA64:"t",
+    XDA65:"t",
+    XDA88:"t",
+
+    /*supermini*/
+    XLA14:"t",
+     /*supermini2*/
+    XLA20:"t",
+    /*mini2*/
+    XLA26:"t",
+     /*mini*/
+   XLA32:"t",
+     /*big*/
+    XLA39:"t",
+    /*big2*/
+    XLA48:"t",
+  /*jumbov2*/
+    XLA55:"t",
+    /*prime*/
+    XLA64:"t",
+    /*megabig2*/
+    XLA77:"t",
+  /*megabig*/
+    XLA89:"t",
+  /*jumbo*/
+    XLA65:"t",
+
+  
+
+
+  
+};
+
+  // =========================
+// TAMPILKAN STOK CIRCLE
+// true = tampil
+// false = sembunyikan
+// =========================
+const CIRCLE_AKTIF = false;
+
+  
+  
+function openTab(tabId,el){
+
+    let tabs =
+    document.querySelectorAll('.tab');
+
+    let buttons =
+    document.querySelectorAll('.menu button');
+
+    tabs.forEach(tab=>{
+        tab.classList.remove('active');
+    });
+
+    buttons.forEach(btn=>{
+        btn.classList.remove('active');
+    });
+
+    document
+    .getElementById(tabId)
+    .classList.add('active');
+
+    el.classList.add('active');
+}
+
+const paketData = {
+
+ XDA13:{
+    Area1:"13GB",
+    Area2:"15GB",
+    Area3:"20GB",
+    Area4:"30GB"
+  },
+    XDA19:{
+    Area1:"19GB",
+    Area2:"21GB",
+    Area3:"26GB",
+    Area4:"36GB"
+  },
+  
+  XDA25:{
+    Area1:"25GB",
+    Area2:"27GB",
+    Area3:"32GB",
+    Area4:"42GB"
+  },
+  
+  XDA31:{
+    Area1:"31GB",
+    Area2:"33GB",
+    Area3:"38GB",
+    Area4:"48GB"
+  },
+  
+  XDA38:{
+    Area1:"38GB",
+    Area2:"40GB",
+    Area3:"45GB",
+    Area4:"55GB"
+  },
+  XDA47:{
+    Area1:"47GB",
+    Area2:"49GB",
+    Area3:"54GB",
+    Area4:"64GB"
+  },
+  XDA55:{
+    Area1:"55GB",
+    Area2:"57GB",
+    Area3:"61GB",
+    Area4:"71GB"
+  },
+  XDA63:{
+    Area1:"63GB",
+    Area2:"65GB",
+    Area3:"70GB",
+    Area4:"80GB"
+  },
+  XDA64:{
+    Area1:"65GB",
+    Area2:"70GB",
+    Area3:"83GB",
+    Area4:"123GB"
+  },
+  XDA65:{
+    Area1:"65GB",
+    Area2:"70GB",
+    Area3:"83GB",
+    Area4:"123GB"
+  },
+  XDA88:{
+    Area1:"88GB",
+    Area2:"90GB",
+    Area3:"95GB",
+    Area4:"105GB"
+  },
+  XLA14:{
+    Area1:"13GB",
+    Area2:"15GB",
+    Area3:"20GB",
+    Area4:"30GB"
+  },
+XLA20:{
+    Area1:"19-21GB",
+    Area2:"21-23GB",
+    Area3:"26-28GB",
+    Area4:"36-38GB"
+  },
+    XLA26:{
+    Area1:"25GB",
+    Area2:"27GB",
+    Area3:"32GB",
+    Area4:"42GB"
+  },
+  XLA32:{
+    Area1:"31GB",
+    Area2:"33GB",
+    Area3:"38GB",
+    Area4:"48GB"
+  },
+  XLA39:{
+    Area1:"38GB",
+    Area2:"40GB",
+    Area3:"45GB",
+    Area4:"55GB"
+  },
+XLA48:{
+    Area1:"48GB",
+    Area2:"50GB",
+    Area3:"55GB",
+    Area4:"64GB"
+  },
+  XLA55:{ 
+    Area1:"55GB",
+    Area2:"57GB",
+    Area3:"62GB",
+    Area4:"72GB"
+  },
+    XLA77:{
+    Area1:"76-78GB",
+    Area2:"78-80GB",
+    Area3:"83-85GB",
+    Area4:"93-95GB"
+    },
+  XLA89:{
+    Area1:"88GB",
+    Area2:"90GB",
+    Area3:"95GB",
+    Area4:"105GB"
+  },
+    XLA64:{
+    Area1:"63GB",
+    Area2:"65GB",
+    Area3:"70GB",
+    Area4:"80GB"
+  }
+
+};
+
+/*
+CARA TAMBAH SENDIRI :
+
+XDA31:{
+  Area1:"31GB",
+  Area2:"33GB",
+  Area3:"38GB",
+  Area4:"48GB"
+},
+
+*/
+
+async function loadData(){
+
+  try{
+
+    const res = await fetch(
+      "https://apis.seno.my.id/stok"
+    );
+// 087850643878
+    const json = await res.json();
+
+    const data = json.data || json;
+
+    let html = "";
+
+    const urutan = Object.keys(paketData).sort((a,b)=>{
+
+const stokA = Number(data[a] || 0);
+const stokB = Number(data[b] || 0);
+
+// stok ada naik ke atas
+if(stokA > 0 && stokB <= 0) return -1;
+
+if(stokA <= 0 && stokB > 0) return 1;
+
+// stok terbesar di atas
+return stokB - stokA;
+
+});
+
+for(const nama of urutan){
+
+if(produkAktif[nama] === 0){
+    continue;
+}
+      const stok = data[nama] || 0;
+
+const warnaCard = stok <= 3 ? '#d6d6d6' : '#ffffff';
+const warnaTop = stok <= 3 ? '#8a8a8a' : '#16a34a';
+
+      const paket = paketData[nama];
+
+ html += `
+
+<div class="card" style="background:${warnaCard}">
+
+<div class="top" style="
+background:${warnaTop};
+position:relative;
+">
+<div style="
+position:absolute;
+top:10px;
+right:10px;
+background:#ffcc00;
+color:white;
+font-size:8px;
+font-weight:bold;
+padding:4px 6px;
+border-radius:6px;
+">
+Reseller
+</div>
+
+        <h2>${({
+'XDA13':'47K',
+'XDA19':'51K',
+'XDA25':'54K',
+'XDA31':'58K',
+'XDA38':'64K',
+'XDA47':'72K',
+'XDA55':'77K',
+'XDA63':'85K',
+'XDA64':'105K',
+'XDA88':'100K',
+'XLA14':'47K v1',
+'XLA20':'51k v1',
+'XLA26':'54K v1',
+'XLA32':'58K v1',
+'XLA39':'63K v1',
+'XLA64':'85K v1',
+'XLA77':'91k v1',
+'XLA89':'100K v1',
+'XDA65':'105K',
+'XLA48':'70K v1',
+'XLA55':'77K',
+})[nama] || nama}</h2>
+          <p>STOCK : ${stok}</p>
+
+        </div>
+
+        <div class="content">
+
+          <div class="row">
+            <span>Area1</span>
+            <span class="gb">${paket.Area1}</span>
+          </div>
+
+          <div class="row">
+            <span>Area2</span>
+            <span class="gb">${paket.Area2}</span>
+          </div>
+           <div class="row">
+            <span>Area3</span>
+            <span class="gb">${paket.Area3}</span>
+          </div>
+
+<div class="row">
+<span>Area4</span>
+<span class="gb">${paket.Area4}</span>
+</div>
+
+${stok > 0 ? `
+<a
+href="javascript:void(0)"
+onclick="orderPaket('${({
+'XDA13':'47K',
+'XDA19':'51K',
+'XDA25':'54K',
+'XDA31':'58K',
+'XDA38':'64K',
+'XDA47':'72K',
+'XDA55':'77K',
+'XDA63':'85K',
+'XDA64':'105K',
+'XDA88':'100K',
+'XLA14':'47K v1',
+'XLA20':'51k v1',
+'XLA26':'54K v1',
+'XLA32':'58K v1',
+'XLA39':'63K v1',
+'XLA64':'85K v1',
+'XLA77':'91k v1',
+'XLA89':'100K v1',
+'XDA65':'105K',
+'XLA48':'70K v1',
+'XLA55':'77K',
+})[nama] || nama}')"
+class="wa-btn"
+style="
+padding:8px;
+font-size:12px;
+margin-top:10px;
+">
+🛒klik Order
+</a>
+` : `
+<a
+class="wa-btn"
+style="
+background:#999;
+pointer-events:none;
+cursor:not-allowed;
+padding:8px;
+font-size:12px;
+margin-top:10px;
+">
+❌ Stok Kosong
+</a>
+`}
+
+${preOrderUmumAktif[nama] === "a" ? `
+
+<a
+href="javascript:void(0)"
+onclick="preOrderUmum('${({
+'XDA13':'47K',
+'XDA19':'51K',
+'XDA25':'54K',
+'XDA31':'58K',
+'XDA38':'64K',
+'XDA47':'72K',
+'XDA55':'77K',
+'XDA63':'85K',
+'XDA64':'105K',
+'XDA88':'100K',
+'XLA14':'47K v1',
+'XLA20':'51k v1',
+'XLA26':'54K v1',
+'XLA32':'58K v1',
+'XLA39':'63K v1',
+'XLA64':'85K v1',
+'XLA77':'91k v1',
+'XLA89':'100K v1',
+'XDA65':'105K',
+'XLA48':'70K v1',
+'XLA55':'77K',
+})[nama] || nama}')"
+class="wa-btn"
+style="
+background:#f59e0b;
+padding:8px;
+font-size:12px;
+margin-top:6px;
+">
+📝 Pre-Order Hari ini
+</a>
+
+` : preOrderUmumAktif[nama] === "b" ? `
+
+<a
+href="javascript:void(0)"
+onclick="preOrderUmum('${({
+'XDA13':'47K',
+'XDA19':'51K',
+'XDA25':'54K',
+'XDA31':'58K',
+'XDA38':'64K',
+'XDA47':'72K',
+'XDA55':'77K',
+'XDA63':'85K',
+'XDA64':'105K',
+'XDA88':'100K',
+'XLA14':'47K v1',
+'XLA20':'51k v1',
+'XLA26':'54K v1',
+'XLA32':'58K v1',
+'XLA39':'63K v1',
+'XLA64':'85K v1',
+'XLA77':'91k v1',
+'XLA89':'100K v1',
+'XDA65':'105K',
+'XLA48':'70K v1',
+'XLA55':'77K',
+})[nama] || nama}')"
+class="wa-btn"
+style="
+background:#3b82f6;
+padding:8px;
+font-size:12px;
+margin-top:6px;
+">
+📅 Pre-Order Besok
+</a>
+
+` : `
+
+<a
+class="wa-btn"
+style="
+background:#999;
+pointer-events:none;
+cursor:not-allowed;
+padding:8px;
+font-size:12px;
+margin-top:6px;
+">
+❌ Pre-Order tutup
+</a>
+
+`}
+
+
+</div>
+</div>
+`;
+
+    }
+
+    document.getElementById("result").innerHTML = html;
+
+  }catch(err){
+
+    document.getElementById("result").innerHTML =
+    "❌ Gagal mengambil data";
+
+  }
+
+}
+
+async function loadCircle(){
+
+  try{
+
+    const res = await fetch(
+      "https://apis.seno.my.id/stok"
+    );
+
+    const json = await res.json();
+    const data = json.data || json;
+
+const sortedData = Object.entries(data).sort((a, b) => {
+
+const stokA = Number(a[1] || 0);
+const stokB = Number(b[1] || 0);
+
+const semuaKosong = Object.values(data)
+.every(x => Number(x || 0) <= 0);
+
+if (semuaKosong) return 0;
+
+// stok > 5 naik
+if (stokA > 5 && stokB <= 5) return -1;
+
+if (stokA <= 5 && stokB > 5) return 1;
+
+// kosong turun
+if (stokA <= 0 && stokB > 0) return 1;
+
+if (stokA > 0 && stokB <= 0) return -1;
+
+return stokB - stokA;
+
+});
+
+    let html = "";
+
+    const kuotaMap = {
+
+      XCLP3:'3 GB - 7 GB',
+      XCLP5:'5 GB - 9 GB',
+      XCLP10:'10 GB - 14 GB',
+      XCLP15:'15 GB - 19 GB',
+      XCLP20:'20 GB - 24 GB',
+      XCLP25:'25 GB - 29 GB',
+      XCLP30:'30 GB - 34 GB',
+      XCLP35:'35 GB - 39 GB',
+      XCLP40:'40 GB - 44 GB',
+      XCLP45:'45 GB - 49 GB',
+      XCLP50:'50 GB - 54 GB',
+      XCLP55:'55 GB - 59 GB',
+      XCLP60:'60 GB - 64 GB',
+      XCLP65:'65 GB - 69 GB',
+      XCLP70:'70 GB - 74 GB',
+      XCLP75:'75 GB - 79 GB',
+
+    };
+
+    for (const [nama, stok] of sortedData) {
+      
+     const allowedCircle = [
+
+'XCLP3',
+'XCLP5',
+'XCLP10',
+'XCLP15',
+'XCLP20',
+'XCLP25',
+'XCLP30',
+'XCLP35',
+'XCLP40',
+'XCLP45',
+'XCLP50',
+'XCLP55',
+'XCLP60',
+'XCLP65',
+'XCLP70',
+'XCLP75',
+
+];
+      if(!allowedCircle.includes(nama))
+continue;
+
+      const stok = data[nama] || 0;
+    const warnaCard = stok <= 3 ? '#d6d6d6' : '#ffffff';
+const warnaTop = stok <= 3 ? '#8a8a8a' : '#16a34a';
+ html += `
+
+      <div class="card">
+
+<div class="top"
+style="
+background:${stok <= 5 ? '#8a8a8a' : 'green'};
+position:relative;
+">
+
+          <div style="
+          position:absolute;
+          top:10px;
+          right:10px;
+          background:#facc15;
+          color:white;
+          font-size:8px;
+          padding:4px 6px;
+          border-radius:5px;
+          font-weight:bold;
+          ">
+          Resseler
+          </div>
+
+          <h2>${({
+
+XCLP3:'14K',
+XCLP5:'20K',
+XCLP10:'25K',
+XCLP15:'30K',
+XCLP20:'35K',
+XCLP25:'40K',
+XCLP30:'45K',
+XCLP35:'50K',
+XCLP40:'55K',
+XCLP45:'60K',
+XCLP50:'65K',
+XCLP55:'70K',
+XCLP60:'75K',
+XCLP65:'80K',
+XCLP70:'85K',
+XCLP75:'90K',
+
+})[nama] || nama}</h2>
+
+          <p>Stock: ${stok}</p>
+
+        </div>
+        <div class="content"
+style="
+text-align:center;
+flex:1;
+display:flex;
+flex-direction:column;
+justify-content:center;
+min-height:16px;
+">
+          <div style="
+background:white;
+border-radius:6px;
+padding:10px;
+font-weight:bold;
+">
+${kuotaMap[nama] || '-'}
+</div>
+
+${stok > 3 ? `
+<a
+href="javascript:void(0)"
+onclick="orderCircle('${({
+XCLP3:'14K',
+XCLP5:'20K',
+XCLP10:'25K',
+XCLP15:'30K',
+XCLP20:'35K',
+XCLP25:'40K',
+XCLP30:'45K',
+XCLP35:'50K',
+XCLP40:'55K',
+XCLP45:'60K',
+XCLP50:'65K',
+XCLP55:'70K',
+XCLP60:'75K',
+XCLP65:'80K',
+XCLP70:'85K',
+XCLP75:'90K'
+})[nama]}')"
+class="wa-btn"
+style="
+padding:8px;
+font-size:12px;
+margin-top:10px;
+">
+🛒 Klik Order
+</a>
+` : `
+<a
+class="wa-btn"
+style="
+background:#999;
+pointer-events:none;
+cursor:not-allowed;
+padding:8px;
+font-size:12px;
+margin-top:10px;
+">
+❌ Stok Kosong
+</a>
+`}
+
+        </div>
+
+      </div>
+
+      `;
+
+    }
+
+    document.getElementById(
+      "circleResult"
+    ).innerHTML = html;
+
+  }catch(err){
+
+    document.getElementById(
+      "circleResult"
+    ).innerHTML =
+    "❌ Gagal mengambil stok circle";
+
+  }
+
+}
+loadData();
+
+if (CIRCLE_AKTIF) {
+    loadCircle();
+    setInterval(loadCircle,5000);
+}
+
+setInterval(loadData,5000);
+  if (!CIRCLE_AKTIF) {
+
+    // Sembunyikan isi Circle
+    document.getElementById("circleResult").style.display = "none";
+
+    // Sembunyikan judul Circle
+    document
+      .getElementById("circleResult")
+      .previousElementSibling
+      .style.display = "none";
+  }
+
+/* STOK PRIVAT */
+
+const privateData = [
+
+{
+nama:"47K",
+stok:stokPrivat["47K"],
+Area1:"13GB",
+Area2:"15GB",
+Area3:"20GB",
+Area4:"30-32GB"
+},
+{
+nama:"60K",
+stok:stokPrivat["60K"],
+Area1:"31-33GB",
+Area2:"33-35GB",
+Area3:"38-40GB",
+Area4:"48-50GB"
+},
+{
+nama:"64K",
+stok:stokPrivat["64K"],
+Area1:"38GB",
+Area2:"40GB",
+Area3:"45GB",
+Area4:"55GB"
+},
+{
+nama:"70K",
+stok:stokPrivat["70K"],
+Area1:"41-43GB",
+Area2:"43-45GB",
+Area3:"48-50GB",
+Area4:"58-60GB"
+},
+{
+nama:"75K",
+stok:stokPrivat["75K"],
+Area1:"50GB",
+Area2:"52GB",
+Area3:"57GB",
+Area4:"67GB"
+},
+{
+nama:"85K",
+stok:stokPrivat["85K"],
+Area1:"63-65GB",
+Area2:"65-67GB",
+Area3:"70-72GB",
+Area4:"80-82GB"
+},
+{
+nama:"90K",
+stok:stokPrivat["90K"],
+Area1:"70-72GB",
+Area2:"72-74GB",
+Area3:"77-79GB",
+Area4:"87-89GB"
+},
+{
+nama:"100K",
+stok:stokPrivat["100K"],
+Area1:"88-90GB",
+Area2:"90-92GB",
+Area3:"92-95GB",
+Area4:"105-107GB"
+},
+{
+nama:"105K",
+stok:stokPrivat["105K"],
+Area1:"65GB",
+Area2:"70GB",
+Area3:"83GB",
+Area4:"120GB"
+},
+{
+nama:"115K",
+stok:stokPrivat["115K"],
+Area1:"85GB",
+Area2:"90GB",
+Area3:"103GB",
+Area4:"143GB"
+},
+{
+nama:"130K",
+stok:stokPrivat["130K"],
+Area1:"105GB",
+Area2:"110GB",
+Area3:"123GB",
+Area4:"163GB"
+},
+
+
+  
+  {
+nama:"78Kv3",
+stok:stokPrivat["78Kv3"],
+Area1:"47GB",
+Area2:"49GB",
+Area3:"54GB",
+Area4:"64GB"
+},
+  {
+nama:"98K",
+stok:stokPrivat["98K"],
+Area1:"47GB",
+Area2:"52GB",
+Area3:"65GB",
+Area4:"105GB"
+},   
+  {   nama:"53Kv3",
+stok:stokPrivat["53Kv3"],
+Area1:"13GB",
+Area2:"15GB",
+Area3:"20GB",
+Area4:"30-32GB"
+},
+{
+nama:"88Kv3",
+stok:stokPrivat["88Kv3"],
+Area1:"63-65GB",
+Area2:"65-67GB",
+Area3:"70-72GB",
+Area4:"80-82GB"
+},
+{
+nama:"105Kv3",
+stok:stokPrivat["105Kv3"],
+Area1:"88-90GB",
+Area2:"90-92GB",
+Area3:"92-95GB",
+Area4:"105-107GB"
+},
+{
+nama:"68Kv3",
+stok:stokPrivat["68Kv3"],
+Area1:"38GB",
+Area2:"40GB",
+Area3:"45GB",
+Area4:"55GB",
+},
+{
+    nama:"80Kv3",
+    stok:stokPrivat["80Kv3"],
+    Area1:"55GB",
+    Area2:"57GB",
+    Area3:"62GB",
+    Area4:"72GB",
+},
+
+];
+
+let privateHTML = "";
+privateData.sort((a,b)=>{
+
+if(a.stok > 0 && b.stok <= 0)
+return -1;
+
+if(a.stok <= 0 && b.stok > 0)
+return 1;
+
+return 0;
+
+});
+
+for(const item of privateData){
+
+if(tampilPrivat[item.nama] === 0){
+    continue;
+}
+const warna =
+item.stok > 0
+? "#1cad4a"
+: "gray";
+
+privateHTML += `
+
+<div class="card">
+
+<div class="top"
+style="
+background:${warna};
+position:relative;
+">
+<div style="
+position:absolute;
+top:10px;
+right:10px;
+background:#ffcc00;
+color:white;
+font-size:8px;
+font-weight:bold;
+padding:4px 6px;
+border-radius:5px;
+">
+Reseller
+</div>
+
+<h2>${item.nama}</h2>
+
+<p>
+${item.stok > 0 ? 'Tersedia' : 'Kosong'}
+</p>
+
+</div>
+
+<div class="content">
+
+<div class="row">
+<span>Area1</span>
+<span class="gb">${item.Area1}</span>
+</div>
+
+<div class="row">
+<span>Area2</span>
+<span class="gb">${item.Area2}</span>
+</div>
+
+<div class="row">
+<span>Area3</span>
+<span class="gb">${item.Area3}</span>
+</div>
+<div class="row">
+<span>Area4</span>
+<span class="gb">${item.Area4}</span>
+</div>
+
+${item.stok > 0 ? `
+<!-- Klik Order Privat disembunyikan -->
+<a
+style="display:none;">
+🛒klik Order
+</a>
+` : `
+<a
+style="
+display:block;
+text-align:center;
+background:#999;
+color:white;
+text-decoration:none;
+padding:8px;
+border-radius:8px;
+font-size:12px;
+font-weight:bold;
+margin-top:10px;
+cursor:not-allowed;
+pointer-events:none;
+">
+❌ Stok Kosong
+</a>
+`}
+
+
+
+
+${preOrderAktif[item.nama] === "a" ? `
+
+<a
+href="javascript:void(0)"
+onclick="preOrderPaket('${item.nama}')"
+style="
+display:block;
+text-align:center;
+background:#f59e0b;
+color:white;
+text-decoration:none;
+padding:8px;
+border-radius:8px;
+font-size:12px;
+font-weight:bold;
+margin-top:6px;
+">
+📝 Pre-Order Hari ini
+</a>
+
+` : preOrderAktif[item.nama] === "b" ? `
+
+<a
+href="javascript:void(0)"
+onclick="preOrderPaket('${item.nama}')"
+style="
+display:block;
+text-align:center;
+background:#3b82f6;
+color:white;
+text-decoration:none;
+padding:8px;
+border-radius:8px;
+font-size:12px;
+font-weight:bold;
+margin-top:6px;
+">
+📅 Pre-Order Besok
+</a>
+
+` : `
+
+<a
+style="
+display:block;
+text-align:center;
+background:#999;
+color:white;
+text-decoration:none;
+padding:8px;
+border-radius:8px;
+font-size:12px;
+font-weight:bold;
+margin-top:6px;
+cursor:not-allowed;
+pointer-events:none;
+">
+❌ Pre-Order Ditutup
+</a>
+
+`}
+</div>
+</div>
+`;
+}
+/* =========================
+cos opertor
+========================= */
+const produkData = {
+
+flexmax:[
+{harga:"37K",kuota:"7GB",masa:"28 Hari"},
+{harga:"43K",kuota:"10GB",masa:"28 Hari"},
+{harga:"51K",kuota:"16GB",masa:"28 Hari"},
+{harga:"60K",kuota:"23GB",masa:"28 Hari"},
+{harga:"77K",kuota:"40GB",masa:"28 Hari"},
+{harga:"85K",kuota:"50GB",masa:"28 Hari"},
+{harga:"93,5K",kuota:"65GB",masa:"28 Hari"},
+{harga:"110K",kuota:"100GB",masa:"28 Hari"},
+{harga:"150K",kuota:"150GB",masa:"28 Hari"},
+{harga:"210K",kuota:"300GB",masa:"28 Hari"},
+{harga:"300K",kuota:"500GB",masa:"28 Hari"},
+],
+
+flexmini:[
+{harga:"9K",kuota:"3GB",masa:"1 Hari"},
+{harga:"12K",kuota:"10GB",masa:"1Hari"},
+{harga:"15K",kuota:"4GB",masa:"3 Hari"},
+{harga:"17K",kuota:"6GB",masa:"3 Hari"},
+{harga:"22K",kuota:"20GB",masa:"3 Hari"},
+{harga:"18K",kuota:"4GB",masa:"7 Hari"},
+{harga:"22K",kuota:"6GB",masa:"7 Hari"},
+{harga:"31K",kuota:"15-20GB",masa:"7 Hari"},
+{harga:"42K",kuota:"40GB",masa:"7 Hari"},
+{harga:"52K",kuota:"75GB",masa:"7 Hari"},
+{harga:"31K",kuota:"8GB",masa:"14 Hari"},
+{harga:"40K",kuota:"15GB",masa:"14 Hari"},
+{harga:"50K",kuota:"30GB",masa:"14 Hari"},
+{harga:"76K",kuota:"75GB",masa:"14 Hari"},
+{harga:"92K",kuota:"150GB",masa:"14 Hari"},
+],
+
+
+ultra5g:[
+{harga:"105K",kuota:"65GB",masa:"28 Hari"},
+{harga:"126K",kuota:"100GB",masa:"28 Hari"},
+{harga:"150K",kuota:"150GB",masa:"28 Hari"},
+{harga:"205K",kuota:"250GB",masa:"28 Hari"},
+{harga:"305K",kuota:"500GB",masa:"28 Hari"},
+{harga:"315K",kuota:"600GB",masa:"28 Hari"},
+],
+
+Flash:[
+{harga:"16K",kuota:"1GB",masa:"30 Hari"},
+{harga:"25k",kuota:"2GB",masa:"30 Hari"},
+{ harga: "27K", kuota: "3GB", masa:"30Hari" },
+  { harga: "32K", kuota: "4GB", masa: "30 Hari" },
+  { harga: "38K", kuota: "5GB", masa: "30 Hari" },
+  { harga: "53K", kuota: "10GB", masa: "30 Hari" },
+  { harga: "58K", kuota: "15GB", masa: "30 Hari" },
+  { harga: "75K", kuota: "18GB", masa: "30 Hari" },
+  { harga: "85K", kuota: "25GB", masa: "30 Hari" },
+  { harga: "95K", kuota: "28GB", masa: "30 Hari" },
+  { harga: "97K", kuota: "30GB", masa: "30 Hari" },
+  { harga: "150K", kuota: "45GB", masa: "30 Hari" },
+  { harga: "155K", kuota: "50GB", masa: "30 Hari" },
+  { harga: "197", kuota: "75GB", masa: "30 Hari" },
+  { harga: "195", kuota: "70GB", masa: "30 Hari" },
+  { harga: "245", kuota: "100GB", masa: "30 Hari" }
+],
+
+WhatsApp:[
+{harga:"8K", kuota:"1GB", masa:"1 Hari"},
+{harga:"9K", kuota:"1GB", masa:"1 Hari"},
+{harga:"13K", kuota:"1GB", masa:"3 Hari"},
+{harga:"14K", kuota:"1GB", masa:"3 Hari"},
+{harga:"18K", kuota:"2.5GB", masa:"3 Hari"},
+{harga:"25K", kuota:"1GB", masa:"7 Hari"},
+{harga:"27K", kuota:"2.5GB", masa:"7 Hari"},
+{harga:"30", kuota:"3.5GB", masa:"7 Hari"},
+{harga:"43K", kuota:"5.5GB", masa:"30 Hari"},
+{harga:"66K", kuota:"11GB", masa:"30 Hari"},
+],
+
+bronet:[
+{harga:"7K", nama:"Axis Data", kuota:"500MB", masa:"30 Hari"},
+{harga:"21K", nama:"Bronet", kuota:"3GB", masa:"30 Hari"},
+{harga:"36K", nama:"Bronet", kuota:"6GB", masa:"30 Hari"},
+{harga:"46K", nama:"Bronet", kuota:"8GB", masa:"30 Hari"},
+{harga:"60K", nama:"Bronet", kuota:"14GB", masa:"30 Hari"},
+{harga:"76K", nama:"Bronet", kuota:"20GB", masa:"30 Hari"},
+{harga:"78K", nama:"Bronet", kuota:"30GB", masa:"30 Hari"},
+{harga:"29K", nama:"Bronet", kuota:"2GB", masa:"60 Hari"},
+{harga:"36K", nama:"Bronet", kuota:"3GB", masa:"60 Hari"},
+{harga:"53K", nama:"Bronet", kuota:"5GB", masa:"60 Hari"},
+{harga:"73K", nama:"Bronet", kuota:"8GB", masa:"60 Hari"},
+{harga:"85K", nama:"Bronet", kuota:"10GB", masa:"60 Hari"},
+{harga:"94K", nama:"Bronet", kuota:"12GB", masa:"60 Hari"},
+{harga:"111K", nama:"Bronet", kuota:"16GB", masa:"60 Hari"},
+{harga:"112K", nama:"Bronet", kuota:"35GB", masa:"60 Hari"},
+{harga:"159K", nama:"Bronet", kuota:"75GB", masa:"60 Hari"},
+],
+mini:[
+  {harga:"9K", kuota:"5GB", masa:"1 Hari"},
+{harga:"12K", kuota:"15GB", masa:"1 Hari"},
+
+{harga:"11K", kuota:"2.5GB", masa:"2 Hari"},
+{harga:"11K", kuota:"5GB", masa:"2 Hari"},
+
+{harga:"13K", kuota:"2.5GB", masa:"3 Hari"},
+{harga:"12K", kuota:"3GB", masa:"3 Hari"},
+{harga:"13K", kuota:"3GB", masa:"3 Hari"},
+{harga:"13K", kuota:"5GB", masa:"3 Hari"},
+{harga:"15K", kuota:"6GB", masa:"3 Hari"},
+{harga:"15K", kuota:"6GB", masa:"3 Hari"},
+{harga:"15K", kuota:"8.5GB", masa:"3 Hari"},
+{harga:"16K", kuota:"8.5GB", masa:"3 Hari"},
+{harga:"18K", kuota:"12.5GB", masa:"3 Hari"},
+{harga:"21K", kuota:"13GB", masa:"3 Hari"},
+{harga:"15K", kuota:"3GB", masa:"7 Hari"},
+{harga:"25K", kuota:"10GB", masa:"7 Hari"},
+{harga:"28K", kuota:"17GB", masa:"7 Hari"},
+{harga:"31K", kuota:"23GB", masa:"7 Hari"},
+{harga:"49K", kuota:"28GB", masa:"7 Hari"},
+{harga:"30K", kuota:"5GB", masa:"15 Hari"},
+{harga:"48K", kuota:"11.5GB", masa:"15 Hari"},
+{harga:"57K", kuota:"30GB", masa:"15 Hari"},
+  
+],
+
+IndosatPromo:[
+{harga:"30K",kuota:"3GB",masa:"28Hari"},
+{harga:"28K",kuota:"4GB",masa:"28Hari"},
+{harga:"36K",kuota:"6GB",masa:"28Hari"},
+{harga:"36K",kuota:"6GB",masa:"28Hari"},
+{harga:"45K",kuota:"6.5GB+Bonuss/d6.5GB",masa:"28Hari"},
+{harga:"36K",kuota:"6.5GB",masa:"28Hari"},
+{harga:"37K",kuota:"7GB",masa:"28Hari"},
+{harga:"40K",kuota:"8GB",masa:"28Hari"},
+{harga:"41K",kuota:"9GB",masa:"28Hari"},
+{harga:"42K",kuota:"10GB",masa:"28Hari"},
+{harga:"52K",kuota:"12GB",masa:"28Hari"},
+{harga:"53K",kuota:"13GB",masa:"28Hari"},
+{harga:"54K",kuota:"14GB",masa:"28Hari"},
+{harga:"63K",kuota:"15GB",masa:"28Hari"},
+{harga:"65K",kuota:"16GB",masa:"28Hari"},
+{harga:"66K",kuota:"18GB",masa:"28Hari"},
+{harga:"67K",kuota:"20GB",masa:"28Hari"},
+{harga:"67K",kuota:"24GB",masa:"28Hari"},
+{harga:"70K",kuota:"25GB",masa:"28Hari"},
+{harga:"72K",kuota:"28GB",masa:"28Hari"},
+{harga:"75K",kuota:"30GB",masa:"28Hari"},
+{harga:"78K",kuota:"40GB",masa:"28Hari"},
+{harga:"95K",kuota:"45GB",masa:"28Hari"},
+{harga:"100K",kuota:"50GB",masa:"28Hari"},
+{harga:"103K",kuota:"55GB",masa:"28Hari"},
+{harga:"105K",kuota:"65GB",masa:"28Hari"},
+{harga:"107K",kuota:"70GB",masa:"28Hari"},
+{harga:"120K",kuota:"80GB",masa:"28Hari"},
+{harga:"122K",kuota:"100GB",masa:"28Hari"},
+{harga:"130K",kuota:"150GB",masa:"28Hari"},
+{harga:"205K",kuota:"200GB",masa:"28Hari"},
+{harga:"238K",kuota:"250GB",masa:"28Hari"}
+]
+  
+
+};
+
+
+/* =========================
+edit isi akun premium
+========================= */
+
+const premiumData = {
+
+netflix:[
+    {nama:"Netflix Premium 1 Bulan",
+harga:"25K",
+stok:"1",
+deskripsi:"Email dari penjual"
+},
+
+],
+viu:[
+  {
+nama:"VIU Premium 3 Bulan",
+harga:"15K",
+stok:"1",
+deskripsi:"akun privat"
+},
+],
+youtube:[
+  {
+nama:"YouTube Premium 1 Bulan",
+harga:"15K",
+stok:"1",
+deskripsi:"via invite dan pelanggan send email"
+},
+
+],
+vidio:[
+{
+nama:"Vidio Premium 1 Tahun",
+harga:"25K",
+stok:"1",
+deskripsi:"Account Privat & ada tutor biar awet KHUSUS TV bukan hp"
+},
+
+{
+nama:"Vidio Premium 1 bulan",
+harga:"30K",
+stok:"1",
+deskripsi:"Privat Account, Proses Menggunakan Akun Pembeli ya. (Khusus Hp / Tab)"
+}
+],
+
+chatgpt:[
+{
+nama:"ChatGPTGo 3 Bulan",
+harga:"25K",
+stok:"0"
+}
+],
+    gemini:[
+{
+nama:"Gemini Ai 3 Bulan",
+harga:"25K",
+deskripsi:"via invite dan pelanggan send email",
+stok:"1"
+}
+],
+
+
+canva:[
+{
+nama:"Canva Pro Invite",
+harga:"10K",
+stok:"1",
+deskripsi:"via invite dan pelanggan send email"
+}
+]
+
+};
+
+/* =========================
+CEK KUOTA
+========================= */
+async function fetchWithRetry(url, maxRetry = 5){
+
+for(let i = 1; i <= maxRetry; i++){
+
+try{
+
+const response = await fetch(url);
+
+if(response.ok){
+return await response.json();
+}
+
+}catch(e){}
+
+if(i < maxRetry){
+await new Promise(r => setTimeout(r,1500));
+}
+
+}
+
+throw new Error("Gagal setelah beberapa percobaan");
+
+} // <-- tutup fetchWithRetry
+
+async function cekKuota(){
+
+const nomorList = document
+.getElementById("nomorinput")
+.value
+.trim()
+.split("\n")
+.map(x => x.trim())
+.filter(x => x);
+
+const resultBox =
+document.getElementById("resultBox");
+
+if(nomorList.length === 0){
+    resultBox.innerHTML = "Masukkan nomor dulu";
+    return;
+}
+  if(nomorList.length > 5){
+    resultBox.innerHTML = `
+    <div class="result-item">
+        ❌ Maksimal 5 nomor per sekali cek
+    </div>
+    `;
+    return;
+  }
+
+resultBox.innerHTML = "Sedang mengecek...";
+
+let hasilHTML = "";
+
+for(const [index, nomorInput] of nomorList.entries()){
+
+try{
+
+const nomor = formatNomor(nomorInput);
+
+const res = await fetchWithRetry(
+`https://sidompul.ciamxl.workers.dev/sidompul?nomor=${encodeURIComponent(nomor)}`
+);
+const info = res.data?.subs_info || {};
+const packageInfo = res.data?.package_info || {};
+const packages = packageInfo.packages || [];
+const errorMessage = packageInfo.error_message || "";
+if(
+errorMessage &&
+(
+errorMessage.includes("10x") ||
+errorMessage.includes("batas maksimal")
+)
+){
+
+hasilHTML += `
+
+<div
+onclick="showDetail(${index})"
+style="
+background:#fff;
+padding:15px;
+border-radius:15px;
+cursor:pointer;
+margin-bottom:10px;
+border-left:5px solid #f59e0b;
+">
+
+<div style="
+display:flex;
+justify-content:space-between;
+align-items:center;
+">
+
+<div>
+
+<div style="
+font-size:22px;
+font-weight:bold;
+">
+⚠️ ${info.msisdn || nomorInput}
+</div>
+
+<div style="
+margin-top:6px;
+color:#666;
+">
+${errorMessage}
+</div>
+
+</div>
+
+<div style="
+background:#fef3c7;
+color:#92400e;
+padding:6px 12px;
+border-radius:999px;
+font-weight:bold;
+">
+Limit
+</div>
+
+</div>
+
+</div>
+
+`;
+
+continue;
+}
+let detailKuota = "";
+
+if(packages.length > 0){
+
+packages.forEach(pkg => {
+
+detailKuota += `
+<div class="quota-item">
+
+<div style="
+padding:10px;
+font-weight:bold;
+color:#fff;
+">
+📦 ${pkg.name || '-'}
+</div>
+
+<div style="
+padding:0 10px 10px;
+font-size:12px;
+color:#93c5fd;
+">
+⏳ Berlaku sampai: ${pkg.expiry || '-'}
+</div>
+`;
+
+(pkg.quotas || []).forEach(q => {
+
+const persen = parseFloat(q.percent || 0);
+
+detailKuota += `
+<div class="xlku-item" style="padding:10px;">
+<div class="xlku-top">
+<span class="xlku-label">${q.name}</span>
+<span class="xlku-value">
+${q.remaining} / ${q.total}
+</span>
+</div>
+
+<div class="xlku-progress">
+<div class="xlku-bar" style="width:${persen}%"></div>
+</div>
+</div>
+`;
+
+});
+
+detailKuota += `</div>`;
+
+});
+
+}else{
+
+detailKuota = `
+<div style="margin-top:10px;color:#d1d5db;">
+Tidak ada detail kuota.
+</div>
+`;
+
+}
+
+hasilHTML += `
+
+<div
+onclick="showDetail(${index})"
+style="
+background:#fff;
+padding:15px;
+border-radius:15px;
+cursor:pointer;
+margin-bottom:10px;
+border-left:5px solid #0ea5e9;
+">
+
+<div style="
+display:flex;
+justify-content:space-between;
+align-items:center;
+">
+
+<div>
+
+<div style="
+font-size:22px;
+font-weight:bold;
+">
+✅ ${info.msisdn || nomorInput}
+</div>
+
+<div style="
+margin-top:6px;
+color:#666;
+">
+📅 Exp: ${info.exp_date || "-"}
+</div>
+
+<div style="
+margin-top:4px;
+color:#999;
+">
+${packages[0]?.name || "Belum ada paket"}
+</div>
+
+</div>
+
+<div style="
+background:#dcfce7;
+color:#15803d;
+padding:6px 12px;
+border-radius:999px;
+font-weight:bold;
+">
+Berhasil
+</div>
+
+</div>
+
+</div>
+
+<div
+id="detail-${index}"
+style="
+display:none;
+margin-top:10px;
+">
+
+<div class="result-item">
+
+<div style="
+background:#fff;
+color:#111;
+padding:15px;
+border-radius:12px;
+margin-bottom:12px;
+">
+
+<h3 style="margin-bottom:10px;">
+📋 Informasi Nomor
+</h3>
+
+<table style="width:100%;">
+<tr>
+<td>Nomor</td>
+<td><b>${info.msisdn || nomorInput}</b></td>
+</tr>
+
+<tr>
+<td>Operator</td>
+<td><b>${info.operator || "-"}</b></td>
+</tr>
+
+<tr>
+<td>ID Verified</td>
+<td><b>${info.id_verified || "-"}</b></td>
+</tr>
+
+<tr>
+<td>Jaringan</td>
+<td><b>${info.net_type || "-"}</b></td>
+</tr>
+
+<tr>
+<td>Masa Aktif</td>
+<td><b>${info.exp_date || "-"}</b></td>
+</tr>
+
+<tr>
+<td>Masa Tenggang</td>
+<td><b>${info.grace_until || "-"}</b></td>
+</tr>
+</table>
+
+</div>
+
+${detailKuota}
+
+</div>
+
+</div>
+
+`;
+
+}catch(err){
+
+hasilHTML += `
+<div class="result-item">
+❌ ${nomorInput} gagal dicek
+</div>
+`;
+
+}
+
+}
+
+resultBox.innerHTML = hasilHTML;
+
+}
+  
+async function cekCircleMember(){
+
+    const nomor = document
+    .getElementById("nomorinput")
+    .value
+    .trim()
+    .split("\n")[0];
+
+    if(!nomor){
+        alert("Masukkan nomor terlebih dahulu");
+        return;
+    }
+
+    const resultBox =
+    document.getElementById("resultBox");
+
+    resultBox.innerHTML = "Sedang mengecek...";
+
+    try{
+
+        const res = await fetch(
+            `https://preorder.seno.my.id/api/circlemembership?msisdn=${encodeURIComponent(nomor)}`
+        );
+
+        const data = await res.json();
+
+        const statusText = data.status || "";
+
+        let icon = "❌";
+        let title = "STATUS TIDAK DIKETAHUI";
+        let bg = "#eff6ff";
+        let border = "#bfdbfe";
+        let color = "#2563eb";
+
+        if(
+    statusText.toLowerCase().includes("tidak tergabung") ||
+    statusText.toLowerCase().includes("belum memenuhi syarat")
+){
+
+    icon = "✅";
+    title = "TIDAK AKTIF";
+    bg = "#f0fdf4";
+    border = "#bbf7d0";
+    color = "#15803d";
+
+}else if(
+    statusText.toLowerCase().includes("masih tergabung") ||
+    statusText.toLowerCase().includes("masih aktif")
+){
+
+    icon = "❌";
+    title = "MASIH AKTIF";
+    bg = "#fef2f2";
+    border = "#fecaca";
+    color = "#dc2626";
+        }
+
+        resultBox.innerHTML = `
+
+<div style="
+background:#fff;
+padding:20px;
+border-radius:20px;
+box-shadow:0 2px 10px rgba(0,0,0,.08);
+">
+
+<div style="
+text-align:center;
+font-size:22px;
+font-weight:700;
+margin-bottom:15px;
+">
+👥 Status Circle
+</div>
+
+<div style="
+background:${bg};
+border:1px solid ${border};
+padding:20px;
+border-radius:15px;
+text-align:center;
+">
+
+<div style="
+font-size:50px;
+margin-bottom:10px;
+">
+${icon}
+</div>
+
+
+<div style="
+margin-top:8px;
+font-size:16px;
+color:#555;
+">
+${statusText}
+</div>
+
+</div>
+
+</div>
+`;
+
+    }catch(err){
+
+        resultBox.innerHTML = `
+        <div class="result-item">
+            ❌ Gagal cek membership
+        </div>
+        `;
+    }
+}
+
+async function cekCircleKuota(){
+
+    const nomor = document
+    .getElementById("nomorinput")
+    .value
+    .trim()
+    .split("\n")[0];
+
+    if(!nomor){
+        alert("Masukkan nomor terlebih dahulu");
+        return;
+    }
+
+    const resultBox =
+    document.getElementById("resultBox");
+
+    resultBox.innerHTML = "Sedang mengecek...";
+
+    try{
+
+        const res = await fetch(
+            `https://preorder.seno.my.id/api/quota?msisdn=${encodeURIComponent(nomor)}`
+        );
+
+        const data = await res.json();
+
+        const total = Number(data.allocation_in_gb || 0);
+const terpakai = Number(data.consumption_in_gb || 0);
+const sisa = Number(data.remaining_in_gb || 0);
+
+const persen =
+total > 0
+? ((terpakai / total) * 100).toFixed(1)
+: 0;
+
+const joinDate = new Date(
+(data.join_date || 0) * 1000
+);
+
+const joinFormat =
+joinDate.toLocaleDateString(
+"id-ID",
+{
+day:"2-digit",
+month:"long",
+year:"numeric"
+}
+);
+
+resultBox.innerHTML = `
+
+<div style="
+background:#fff;
+padding:15px;
+border-radius:15px;
+box-shadow:0 2px 10px rgba(0,0,0,.08);
+">
+
+<div style="
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
+">
+
+<div style="
+background:#fff;
+border:1px solid #eee;
+border-radius:12px;
+padding:15px;
+">
+
+<div style="font-size:14px;color:#666">
+Terpakai
+</div>
+
+<div style="
+font-size:30px;
+font-weight:bold;
+color:#dc2626;
+margin-top:8px;
+">
+${terpakai} GB
+</div>
+
+<div style="color:#777">
+${persen}% dari total
+</div>
+
+</div>
+
+<div style="
+background:#fff;
+border:1px solid #eee;
+border-radius:12px;
+padding:15px;
+">
+
+<div style="font-size:14px;color:#666">
+Sisa
+</div>
+
+<div style="
+font-size:30px;
+font-weight:bold;
+color:#16a34a;
+margin-top:8px;
+">
+${sisa} GB
+</div>
+
+<div style="color:#777">
+Tersedia
+</div>
+
+</div>
+
+</div>
+
+<div style="
+margin-top:15px;
+background:#fff;
+border:1px solid #eee;
+border-radius:12px;
+padding:15px;
+">
+
+<div style="
+font-weight:bold;
+margin-bottom:10px;
+">
+Penggunaan Data
+</div>
+
+<div style="
+height:12px;
+background:#e5e7eb;
+border-radius:999px;
+overflow:hidden;
+">
+
+<div style="
+width:${persen}%;
+height:100%;
+background:#2563eb;
+">
+</div>
+
+</div>
+
+<div style="
+display:flex;
+justify-content:space-between;
+margin-top:8px;
+font-size:12px;
+">
+
+<span>0 GB</span>
+
+<b style="
+color:#2563eb;
+">
+${persen}% Terpakai
+</b>
+
+<span>${total} GB</span>
+
+</div>
+
+</div>
+
+<div style="
+margin-top:15px;
+background:#fff;
+border:1px solid #eee;
+border-radius:12px;
+padding:15px;
+">
+
+<div style="
+font-weight:bold;
+margin-bottom:10px;
+">
+📊 Statistik Penggunaan
+</div>
+
+<div style="
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:8px;
+">
+
+<div style="
+background:#f8fafc;
+padding:10px;
+border-radius:10px;
+text-align:center;
+">
+<div style="font-size:12px">Total</div>
+<b>${total} GB</b>
+</div>
+
+<div style="
+background:#fef2f2;
+padding:10px;
+border-radius:10px;
+text-align:center;
+">
+<div style="font-size:12px">Terpakai</div>
+<b style="color:#dc2626">
+${terpakai} GB
+</b>
+</div>
+
+<div style="
+background:#ecfdf5;
+padding:10px;
+border-radius:10px;
+text-align:center;
+">
+<div style="font-size:12px">Sisa</div>
+<b style="color:#16a34a">
+${sisa} GB
+</b>
+</div>
+
+</div>
+
+</div>
+
+<div style="
+margin-top:15px;
+background:#ecfdf5;
+border-radius:12px;
+padding:15px;
+">
+
+<div style="
+display:flex;
+align-items:center;
+gap:12px;
+">
+
+<div style="font-size:26px;">
+✅
+</div>
+
+<div>
+
+<div style="
+color:#15803d;
+font-weight:600;
+">
+Bergabung
+</div>
+
+<div style="
+font-size:22px;
+font-weight:700;
+">
+${joinFormat}
+</div>
+
+</div>
+
+</div>
+
+
+</div>
+`;
+
+    }catch(err){
+
+        resultBox.innerHTML =
+        `<div class="result-item">
+            ❌ Gagal cek kuota circle
+        </div>`;
+    }
+}
+function formatNomor(nomor){
+
+    nomor = nomor.trim();
+
+    // hapus selain angka
+    nomor = nomor.replace(/\D/g,'');
+
+    // 08xxxx -> 628xxxx
+    if(nomor.startsWith('08')){
+        nomor = '62' + nomor.substring(1);
+    }
+
+    // 8xxxx -> 628xxxx
+    else if(nomor.startsWith('8')){
+        nomor = '62' + nomor;
+    }
+
+    return nomor;
+}
+
+function showDetail(id){
+
+const detail =
+document.getElementById("detail-"+id);
+
+if(detail.style.display === "none"){
+detail.style.display = "block";
+}else{
+detail.style.display = "none";
+}
+
+}
+
+/* =========================
+CEK AREA
+========================= */
+const data = 
+`Kab. Aceh Barat|Area 4
+Kab. Aceh Barat Daya|Area 2
+Kab. Aceh Besar|Area 2
+Kab. Aceh Jaya|Area 3
+Kab. Aceh Selatan|Area 3
+Kab. Aceh Singkil|Area 4
+Kab. Aceh Tamiang|Area 4
+Kab. Aceh Tengah|Area 4
+Kab. Aceh Tenggara|Area 3
+Kab. Aceh Timur|Area 4
+Kab. Aceh Utara|Area 4
+Kab. Agam|Area 4
+Kab. Alor|Area 4
+Kab. Asahan|Area 3
+Kab. Asmat|Area 1
+Kab. Badung|Area 2
+Kab. Balangan|Area 3
+Kab. Bandung|Area 1
+Kab. Bandung Barat|Area 2
+Kab. Banggai|Area 4
+Kab. Banggai Kepulauan|Area 3
+Kab. Banggai Laut|Area 3
+Kab. Bangka|Area 3
+Kab. Bangka Barat|Area 3
+Kab. Bangka Selatan|Area 2
+Kab. Bangka Tengah|Area 3
+Kab. Bangkalan|Area 2
+Kab. Bangli|Area 2
+Kab. Banjar|Area 2
+Kab. Banjarnegara|Area 4
+Kab. Bantul|Area 1
+Kab. Banyuasin|Area 3
+Kab. Banyumas|Area 4
+Kab. Banyuwangi|Area 2
+Kab. Barito Kuala|Area 3
+Kab. Barito Selatan|Area 4
+Kab. Barito Timur|Area 4
+Kab. Barito Utara|Area 4
+Kab. Barru|Area 2
+Kab. Batang|Area 4
+Kab. Batanghari|Area 3
+Kab. Batu Bara|Area 3
+Kab. Bekasi|Area 3
+Kab. Belitung|Area 2
+Kab. Belitung Timur|Area 2
+Kab. Belu|Area 4
+Kab. Bener Meriah|Area 4
+Kab. Bengkalis|Area 3
+Kab. Bengkayang|Area 4
+Kab. Bengkulu Selatan|Area 4
+Kab. Bengkulu Tengah|Area 4
+Kab. Bengkulu Utara|Area 4
+Kab. Berau	Area 4
+Kab. Biak Numfor|Area 1
+Kab. Bima|Area 4
+Kab. Bintan|Area 3
+Kab. Bireuen|Area 4
+Kab. Blitar|Area 4
+Kab. Blora|Area 4
+Kab. Boalemo|Area 4
+Kab. Bogor|Area 3
+Kab. Bojonegoro|Area 4
+Kab. Bolaang Mongondow|Area 4
+Kab. Bolaang Mongondow Selatan|Area 4
+Kab. Bolaang Mongondow Timur|Area 4
+Kab. Bolaang Mongondow Utara|Area 4
+Kab. Bombana|Area 4
+Kab. Bondowoso|Area 4
+Kab. Bone|Area 4
+Kab. Bone Bolango|Area 4
+Kab. Boven Digoel|Area 1
+Kab. Boyolali|Area 3
+Kab. Brebes|Area 2
+Kab. Buleleng|Area 1
+Kab. Bulukumba|Area 4
+Kab. Bulungan|Area 4
+Kab. Bungo|Area 4
+Kab. Buol|Area 4
+Kab. Buru|Area 1
+Kab. Buru Selatan|Area 1
+Kab. Buton|Area 4
+Kab. Buton Selatan|Area 3
+Kab. Buton Tengah|Area 3
+Kab. Ciamis|Area 3
+Kab. Cianjur|Area 4
+Kab. Cilacap|Area 3
+Kab. Cirebon|Area 2
+Kab. Dairi|Area 2
+Kab. Deli Serdang|Area 3
+Kab. Demak|Area 4
+Kab. Dharmasraya|Area 4
+Kab. Dompu|Area 2
+Kab. Donggala|Area 4
+Kab. Empat Lawang|Area 4
+Kab. Ende|Area 4
+Kab. Enrekang|Area 3
+Kab. Fak Fak|Area 1
+Kab. Flores Timur|Area 4
+Kab. Garut|Area 3
+Kab. Gayo Lues|Area 2
+Kab. Gianyar|Area 2
+Kab. Gorontalo|Area 4
+Kab. Gorontalo Utara|Area 4
+Kab. Gowa|Area 4
+Kab. Gresik|Area 4
+Kab. Grobogan|Area 3
+Kab. Gunung Mas|Area 4
+Kab. Gunungkidul|Area 1
+Kab. Halmahera Barat|Area 1
+Kab. Halmahera Selatan|Area 1
+Kab. Halmahera Timur|Area 1
+Kab. Hulu Sungai Selatan|Area 2
+Kab. Hulu Sungai Tengah|Area 2
+Kab. Hulu Sungai Utara|Area 2
+Kab. Humbang Hasundutan|Area 4
+Kab. Indragiri Hilir|Area 4
+Kab. Indragiri Hulu|Area 3
+Kab. Indramayu|Area 2
+Kab. Jayapura|Area 1
+Kab. Jember|Area 4
+Kab. Jembrana|Area 1
+Kab. Jeneponto|Area 4
+Kab. Jepara|Area 4
+Kab. Jombang|Area 4
+Kab. Kampar|Area 3
+Kab. Kapuas|Area 3
+Kab. Kapuas Hulu|Area 4
+Kab. Karanganyar|Area 4
+Kab. Karangasem|Area 2
+Kab. Karawang|Area 4
+Kab. Karimun|Area 3
+Kab. Karo|Area 2
+Kab. Katingan|Area 4
+Kab. Kaur|Area 4
+Kab. Kayong Utara|Area 4
+Kab. Kebumen|Area 2
+Kab. Kediri|Area 4
+Kab. Keerom|Area 1
+Kab. Kendal|Area 3
+Kab. Kepahiang|Area 4
+Kab. Kepulauan Anambas|Area 4
+Kab. Kepulauan Aru|Area 1
+Kab. Kepulauan Meranti|Area 3
+Kab. Kepulauan Sangihe|Area 4
+Kab. Kepulauan Selayar|Area 4
+Kab. Kepulauan Seribu|Area 3
+Kab. Kepulauan Sula|Area 1
+Kab. Kepulauan Talaud|Area 4
+Kab. Kepulauan Yapen|Area 1
+Kab. Kerinci|Area 4
+Kab. Ketapang|Area 4
+Kab. Klaten|Area 4
+Kab. Klungkung|Area 2
+Kab. Kolaka|Area 4
+Kab. Kolaka Timur|Area 4
+Kab. Kolaka Utara|Area 4
+Kab. Konawe|Area 4
+Kab. Konawe Kepulauan|Area 2
+Kab. Konawe Selatan|Area 4
+Kab. Konawe Utara|Area 2
+Kab. Kotabaru|Area 3
+Kab. Kotawaringin Barat|Area 4
+Kab. Kotawaringin Timur|Area 4
+Kab. Kuantan Singingi|Area 3
+Kab. Kubu Raya|Area 4
+Kab. Kudus|Area 4
+Kab. Kulon Progo|Area 1
+Kab. Kuningan|Area 1
+Kab. Kupang|Area 4
+Kab. Kutai Barat|Area 4
+Kab. Kutai Kartanegara|Area 4
+Kab. Kutai Timur|Area 4
+Kab. Labuhanbatu|Area 4
+Kab. Labuhanbatu Selatan|Area 4
+Kab. Labuhanbatu Utara|Area 4
+Kab. Lahat|Area 4
+Kab. Lamandau|Area 4
+Kab. Lamongan|Area 4
+Kab. Lampung Barat|Area 4
+Kab. Lampung Selatan|Area 3
+Kab. Lampung Tengah|Area 3
+Kab. Lampung Timur|Area 4
+Kab. Lampung Utara|Area 4
+Kab. Landak|Area 4
+Kab. Langkat|Area 3
+Kab. Lebak|Area 2
+Kab. Lebong|Area 4
+Kab. Lembata|Area 4
+Kab. Lima Puluh Kota|Area 4
+Kab. Lingga|Area 4
+Kab. Lombok Barat|Area 2
+Kab. Lombok Tengah|Area 2
+Kab. Lombok Timur|Area 2
+Kab. Lombok Utara|Area 2
+Kab. Lumajang|Area 3
+Kab. Luwu|Area 4
+Kab. Luwu Timur|Area 3
+Kab. Luwu Utara|Area 4
+Kab. Madiun|Area 4
+Kab. Magelang|Area 4
+Kab. Magetan|Area 4
+Kab. Mahakam Ulu|Area 4
+Kab. Majalengka|Area 3
+Kab. Majene|Area 3
+Kab. Malaka|Area 4
+Kab. Malang|Area 4
+Kab. Malinau|Area 4
+Kab. Maluku Barat Daya|Area 1
+Kab. Maluku Tengah|Area 1
+Kab. Maluku Tenggara Barat|Area 1
+Kab. Mamasa|Area 4
+Kab. Mamuju|Area 4
+Kab. Mamuju Utara|Area 3
+Kab. Mandailing Natal|Area 4
+Kab. Manggarai|Area 4
+Kab. Manggarai Barat|Area 4
+Kab. Manggarai Timur|Area 4
+Kab. Manokwari|Area 1
+Kab. Manokwari Selatan|Area 1
+Kab. Mappi|Area 1
+Kab. Maros|Area 4
+Kab. Maybrat|Area 1
+Kab. Melawi|Area 4
+Kab. Mempawah|Area 4
+Kab. Merangin|Area 4
+Kab. Merauke|Area 1
+Kab. Mesuji|Area 4
+Kab. Mimika|Area 1
+Kab. Minahasa|Area 4
+Kab. Minahasa Selatan|Area 4
+Kab. Minahasa Tenggara|Area 4
+Kab. Minahasa Utara|Area 4
+Kab. Mojokerto|Area 4
+Kab. Morowali|Area 3
+Kab. Morowali Utara|Area 3
+Kab. Muara Enim|Area 4
+Kab. Muaro Jambi|Area 3
+Kab. Muko Muko|Area 4
+Kab. Muna|Area 3
+Kab. Muna Barat|Area 3
+Kab. Murung Raya|Area 4
+Kab. Musi Banyuasin|Area 4
+Kab. Musi Rawas|Area 4
+Kab. Musi Rawas Utara|Area 4
+Kab. Nagan Raya|Area 3
+Kab. Nagekeo|Area 4
+Kab. Natuna|Area 4
+Kab. Ngada|Area 4
+Kab. Nganjuk|Area 4
+Kab. Ngawi|Area 4
+Kab. Nias|Area 4
+Kab. Nunukan|Area 4
+Kab. Ogan Ilir|Area 3
+Kab. Ogan Komering Ilir|Area 3
+Kab. Ogan Komering Ulu|Area 4
+Kab. Ogan Komering Ulu Selatan|Area 4
+Kab. Ogan Komering Ulu Timur|Area 4
+Kab. Pacitan|Area 2
+Kab. Padang Lawas|Area 4
+Kab. Padang Lawas Utara|Area 4
+Kab. Padang Pariaman|Area 3
+Kab. Pahuwato|Area 4
+Kab. Pakpak Bharat|Area 4
+Kab. Pamekasan|Area 2
+Kab. Pandeglang|Area 2
+Kab. Pangandaran|Area 4
+Kab. Pangkajene Kepulauan|Area 4
+Kab. Parigi Moutong|Area 4
+Kab. Pasaman|Area 4
+Kab. Pasaman Barat|Area 4
+Kab. Paser|Area 4
+Kab. Pasuruan|Area 4
+Kab. Pati|Area 4
+Kab. Pekalongan|Area 4
+Kab. Pelalawan|Area 3
+Kab. Pemalang|Area 2
+Kab. Penajam Paser Utara|Area 4
+Kab. Penukal Abab Lematang Ilir|Area 3
+Kab. Pesawaran|Area 3
+Kab. Pesisir Barat|Area 4
+Kab. Pesisir Selatan|Area 4
+Kab. Pidie|Area 4
+Kab. Pidie Jaya|Area 4
+Kab. Pinrang|Area 2
+Kab. Polewali Mandar|Area 3
+Kab. Ponorogo|Area 4
+Kab. Poso|Area 4
+Kab. Pringsewu|Area 3
+Kab. Probolinggo|Area 3
+Kab. Pulang Pisau|Area 3
+Kab. Pulau Taliabu|Area 1
+Kab. Purbalingga|Area 4
+Kab. Purwakarta|Area 1
+Kab. Purworejo|Area 4
+Kab. Rejang Lebong|Area 4
+Kab. Rembang|Area 3
+Kab. Rokan Hilir|Area 3
+Kab. Rokan Hulu|Area 4
+Kab. Rote Ndao|Area 4
+Kab. Sabu Raijua|Area 4
+Kab. Sambas|Area 4
+Kab. Samosir|Area 4
+Kab. Sampang|Area 2
+Kab. Sanggau|Area 4
+Kab. Sarolangun|Area 3
+Kab. Sekadau|Area 4
+Kab. Seluma|Area 3
+Kab. Semarang|Area 3
+Kab. Seram Bagian Barat|Area 1
+Kab. Seram Bagian Timur|Area 1
+Kab. Serang|Area 2
+Kab. Serdang Bedagai|Area 3
+Kab. Seruyan|Area 4
+Kab. Siak|Area 3
+Kab. Siau Tagulandang Biaro|Area 4
+Kab. Sidenreng Rappang|Area 3
+Kab. Sidoarjo|Area 2
+Kab. Sigi|Area 4
+Kab. Sijunjung|Area 3
+Kab. Sikka|Area 4
+Kab. Simalungun|Area 4
+Kab. Simeulue|Area 4
+Kab. Sinjai|Area 3
+Kab. Sintang|Area 4
+Kab. Situbondo|Area 4
+Kab. Sleman|Area 1
+Kab. Solok|Area 4
+Kab. Solok Selatan|Area 3
+Kab. Soppeng|Area 3
+Kab. Sorong|Area 1
+Kab. Sorong Selatan|Area 1
+Kab. Sragen|Area 4
+Kab. Subang|Area 2
+Kab. Sukabumi|Area 4
+Kab. Sukamara|Area 4
+Kab. Sukoharjo|Area 4
+Kab. Sumba Barat|Area 4
+Kab. Sumba Barat Daya|Area 4
+Kab. Sumba Tengah|Area 4
+Kab. Sumba Timur|Area 4
+Kab. Sumbawa|Area 2
+Kab. Sumbawa Barat|Area 2
+Kab. Sumedang|Area 3
+Kab. Sumenep|Area 2
+Kab. Tabalong|Area 2
+Kab. Tabanan|Area 2
+Kab. Takalar|Area 4
+Kab. Tana Tidung|Area 4
+Kab. Tana Toraja|Area 3
+Kab. Tanah Bumbu|Area 2
+Kab. Tanah Datar|Area 4
+Kab. Tanah Laut|Area 3
+Kab. Tangerang|Area 2
+Kab. Tanggamus|Area 4
+Kab. Tanjung Jabung Barat|Area 3
+Kab. Tanjung Jabung Timur|Area 4
+Kab. Tapanuli Selatan|Area 4
+Kab. Tapanuli Tengah|Area 4
+Kab. Tapanuli Utara|Area 4
+Kab. Tapin|Area 2
+Kab. Tasikmalaya|Area 3
+Kab. Tebo|Area 4
+Kab. Tegal|Area 2
+Kab. Teluk Bintuni|Area 1
+Kab. Teluk Wondama|Area 1
+Kab. Temanggung|Area 4
+Kab. Timor Tengah Selatan|Area 4
+Kab. Timor Tengah Utara|Area 4
+Kab. Toba Samosir|Area 4
+Kab. Tojo Una Una|Area 3
+Kab. Toli Toli|Area 3
+Kab. Toraja Utara|Area 4
+Kab. Trenggalek|Area 4
+Kab. Tuban|Area 4
+Kab. Tulang Bawang|Area 4
+Kab. Tulang Bawang Barat|Area 4
+Kab. Tulungagung|Area 4
+Kab. Wajo|Area 4
+Kab. Way Kanan|Area 4
+Kab. Wonogiri|Area 4
+Kab. Wonosobo|Area 4
+Kota Ambon|Area 1
+Kota Balikpapan|Area 4
+Kota Banda Aceh|Area 3
+Kota Bandar Lampung|Area 3
+Kota Bandung|Area 1
+Kota Banjar|Area 3
+Kota Banjarbaru|Area 2
+Kota Banjarmasin|Area 2
+Kota Batam|Area 2
+Kota Batu|Area 4
+Kota Bau Bau|Area 3
+Kota Bekasi|Area 3
+Kota Bengkulu|Area 4
+Kota Bima|Area 2
+Kota Binjai|Area 3
+Kota Bitung|Area 4
+Kota Blitar|Area 4
+Kota Bogor|Area 3
+Kota Bontang|Area 4
+Kota Bukittinggi|Area 4
+Kota Cilegon|Area 2
+Kota Cimahi|Area 2
+Kota Cirebon|Area 2
+Kota Denpasar|Area 2
+Kota Depok|Area 3
+Kota Dumai|Area 3
+Kota Gorontalo|Area 4
+Kota Gunungsitoli|Area 3
+Kota Jakarta Barat|Area 2
+Kota Jakarta Pusat|Area 2
+Kota Jakarta Selatan|Area 2
+Kota Jakarta Timur|Area 2
+Kota Jakarta Utara|Area 2
+Kota Jambi|Area 3
+Kota Jayapura|Area 1
+Kota Kediri|Area 4
+Kota Kendari|Area 4
+Kota Kotamobagu|Area 4
+Kota Kupang|Area 4
+Kota Langsa|Area 4
+Kota Lhokseumawe|Area 4
+Kota Lubuk Linggau|Area 4
+Kota Madiun|Area 4
+Kota Magelang|Area 4
+Kota Makassar|Area 4
+Kota Malang|Area 4
+Kota Manado|Area 4
+Kota Mataram|Area 2
+Kota Medan|Area 2
+Kota Metro|Area 3
+Kota Mojokerto|Area 4
+Kota Padang|Area 3
+Kota Padang Panjang|Area 3
+Kota Padangsidimpuan|Area 4
+Kota Pagar Alam|Area 4
+Kota Palangkaraya|Area 3
+Kota Palembang|Area 3
+Kota Palopo|Area 4
+Kota Palu|Area 3
+Kota Pangkal Pinang|Area 2
+Kota Pare Pare|Area 2
+Kota Pariaman|Area 4
+Kota Pasuruan|Area 4
+Kota Payakumbuh|Area 3
+Kota Pekalongan|Area 4
+Kota Pekanbaru|Area 2
+Kota Pematangsiantar|Area 4
+Kota Pontianak|Area 4
+Kota Prabumulih|Area 4
+Kota Probolinggo|Area 2
+Kota Sabang|Area 2
+Kota Salatiga|Area 3
+Kota Samarinda|Area 4
+Kota Sawahlunto|Area 4
+Kota Semarang|Area 2
+Kota Serang|Area 2
+Kota Sibolga|Area 4
+Kota Singkawang|Area 4
+Kota Solok|Area 4
+Kota Sorong|Area 1
+Kota Subulussalam|Area 4
+Kota Sukabumi|Area 4
+Kota Sungai Penuh|Area 4
+Kota Surabaya|Area 2
+Kota Surakarta|Area 2
+Kota Tangerang|Area 2
+Kota Tangerang Selatan|Area 2
+Kota Tanjung Balai|Area 3
+Kota Tanjung Pinang|Area 3
+Kota Tarakan|Area 4
+Kota Tasikmalaya|Area 3
+Kota Tebing Tinggi|Area 3
+Kota Tegal|Area 2
+Kota Tidore Kepulauan|Area 1
+Kota Tomohon|Area 4
+Kota Yogyakarta|Area 1`;
+
+const tbody =
+document.getElementById("tableBody");
+
+function renderTable(keyword = ""){
+
+    tbody.innerHTML = "";
+
+    data.split("\n").forEach(line => {
+
+        const parts = line.split("|");
+
+        const kota = parts[0];
+        const area = parts[1];
+
+        // filter search
+        if(
+            !kota.toLowerCase()
+            .includes(keyword.toLowerCase())
+        ) return;
+
+        const tr =
+        document.createElement("tr");
+
+        tr.innerHTML = `
+            <td>${kota}</td>
+            <td>${area}</td>
+        `;
+
+        tbody.appendChild(tr);
+
+    });
+
+}
+
+// tampil awal
+renderTable();
+document
+.getElementById("nomorArea")
+.addEventListener("input", function(){
+
+    renderTable(this.value);
+
+});
+// tombol cek area
+function cekArea(){
+
+    const keyword =
+    document.getElementById("nomorArea")
+    .value;
+
+    renderTable(keyword);
+
+}
+
+function orderPaket(paket){
+
+    let nomor = prompt(
+"Masukkan nomor XL/Axis yang akan diisi:"
+);
+
+if(!nomor) return;
+
+if(!/^\d+$/.test(nomor)){
+    alert("Hanya boleh angka!");
+    return;
+}
+
+    if(!nomor) return;
+
+    const pesan =
+`Order
+Nomor: ${nomor}
+Paket Umum: ${paket}`;
+
+    window.location.href =
+`whatsapp://send?phone=6285815633781&text=${encodeURIComponent(pesan)}`;
+
+
+}
+  
+function orderPrivat(paket){
+
+let nomor = prompt(
+"Masukkan nomor XL/Axis yang akan diisi:"
+);
+
+if(!nomor) return;
+
+if(!/^\d+$/.test(nomor)){
+    alert("Hanya boleh angka!");
+    return;
+}
+
+    if(!nomor) return;
+
+    const pesan =
+`Order
+Nomor: ${nomor}
+Paket Privat: ${paket}`;
+    window.location.href =
+`whatsapp://send?phone=6285815633781&text=${encodeURIComponent(pesan)}`;
+    
+
+    }
+  function preOrderPaket(paket){
+
+let nomor = prompt(
+"Masukkan nomor XL/Axis yang akan diisi:"
+);
+
+if(!nomor) return;
+
+if(!/^\d+$/.test(nomor)){
+    alert("Hanya boleh angka!");
+    return;
+}
+
+const pesan =
+`PRE-ORDER
+Nomor: ${nomor}
+Paket Privat: ${paket}
+Paket akan diisi setelah ada stok`;
+
+window.location.href =
+`whatsapp://send?phone=6285815633781&text=${encodeURIComponent(pesan)}`;
+
+  }
+function preOrderUmum(paket){
+
+let nomor = prompt(
+"Masukkan nomor XL/Axis yang akan diisi:"
+);
+
+if(!nomor) return;
+
+if(!/^\d+$/.test(nomor)){
+    alert("Hanya boleh angka!");
+    return;
+}
+
+const pesan =
+`PRE-ORDER
+Nomor: ${nomor}
+Paket Umum: ${paket}
+Paket akan diisi setelah ada stok`;
+
+window.location.href =
+`whatsapp://send?phone=6285815633781&text=${encodeURIComponent(pesan)}`;
+
+      }
+function orderCircle(paket){
+
+let nomor = prompt(
+"Masukkan nomor XL yang akan diisi:"
+);
+
+if(!nomor) return;
+
+if(!/^\d+$/.test(nomor))
+{
+    alert("Hanya boleh angka!");
+    return;
+}
+
+    if(!nomor) return;
+
+    const pesan =
+`Order
+Nomor: ${nomor}
+Paket Circle: ${paket}`;
+
+    window.location.href =
+`whatsapp://send?phone=6285815633781&text=${encodeURIComponent(pesan)}`;
+
+    }
+    
+    
+const providerData = {
+
+xl:[
+    {id:"flexmax",nama:"FLEXMAX"},
+    {id:"flexmini",nama:"FLEX MINI"},
+    {id:"ultra5g",nama:"ULTRA 5G"}
+],
+
+telkomsel:[
+    {id:"Flash",nama:"NASIONAL"},
+    {id:"WhatsApp",nama:"KETENGAN WA"}
+],
+
+axis:[
+    {id:"bronet",nama:"BRONET"},
+    {id:"mini",nama:"MINI"}
+],
+
+indosat:[
+    {id:"IndosatPromo",nama:"Bulanan"},
+    {id:"yellow",nama:"YELLOW"}
+],
+
+tri:[
+    {id:"happy",nama:"HAPPY"},
+    {id:"alwayson",nama:"ALWAYS ON"}
+],
+
+smartfren:[
+    {id:"unlimited",nama:"UNLIMITED"},
+    {id:"nonstop",nama:"NONSTOP"}
+]
+
+};
+function showProvider(provider,btn){
+
+document
+.querySelectorAll("#providerMenu button")
+.forEach(x=>x.classList.remove("active"));
+
+btn.classList.add("active");
+
+document.getElementById(
+"kategoriMenu"
+).style.display="flex";
+
+const kategori =
+providerData[provider] || [];
+
+let html = "";
+
+kategori.forEach(item=>{
+
+html += `
+<button onclick="pilihKategori(this,'${item.id}')">
+${item.nama}
+</button>
+`;
+
+});
+
+document.getElementById(
+"kategoriMenu"
+).innerHTML = html;
+
+document.getElementById(
+"produkContainer"
+).innerHTML = "";
+
+}
+
+
+
+
+function showProduk(kategori){
+
+
+let data =
+produkData[kategori] || [];
+
+let html = `
+
+<div style="
+background:white;
+padding:15px;
+border-radius:15px;
+margin-bottom:15px;
+font-weight:bold;
+">
+
+<span onclick="kembaliOperator()">
+← Kembali
+</span>
+
+</div>
+
+<div id="produkGrid">
+
+`;
+
+data.forEach(item=>{
+
+html += `
+
+<div class="card">
+
+<div class="card">
+
+<div class="top"
+style="background:#16a34a">
+
+<h2>${item.harga}</h2>
+
+<div class="masa-aktif">
+${item.masa}
+</div>
+
+</div>
+
+<div class="content">
+
+<div style="
+text-align:center;
+font-size:18px;
+font-weight:700;
+margin-bottom:10px;
+">
+${kategori.toUpperCase()}
+</div>
+
+<div style="
+text-align:center;
+font-size:40px;
+font-weight:bold;
+margin-bottom:15px;
+">
+${item.kuota}
+</div>
+
+<a
+href="javascript:void(0)"
+onclick="orderOperatorProduk('${kategori}','${item.kuota}','${item.harga}')"
+class="wa-btn">
+🛒 Klik Order
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+html += "</div>";
+
+document.getElementById(
+"produkContainer"
+).innerHTML = html;
+
+}
+
+function kembaliOperator(){
+
+document.getElementById(
+"produkContainer"
+).innerHTML = "";
+
+}
+function filterNomor(el){
+
+let lines = el.value.split("\n");
+
+lines = lines.map(line =>
+line.replace(/\D/g,'').substring(0,13)
+);
+
+el.value = lines.join("\n");
+
+}
+
+
+
+function orderOperator(
+operator,
+produk,
+harga
+){
+
+let nomor = prompt(
+"Masukkan nomor yang akan diisi:"
+);
+
+if(!nomor) return;
+
+if(!/^\d+$/.test(nomor)){
+    alert("Hanya boleh angka!");
+    return;
+}
+
+if(!nomor) return;
+
+const pesan =
+`Order ${operator}
+Nomor : ${nomor}
+Produk : ${produk}
+Harga : ${harga}`;
+
+window.location.href =
+`whatsapp://send?phone=6285815633781&text=${encodeURIComponent(pesan)}`;
+
+}
+function toggleOperator(id){
+
+let box =
+document.getElementById(id);
+
+if(box.style.display==="block"){
+box.style.display="none";
+}else{
+box.style.display="block";
+}
+
+}
+
+function toggleSection(id, el){
+
+    const target = document.getElementById(id);
+    const text = el.querySelector(".section-toggle");
+
+    if(getComputedStyle(target).display === "none"){
+        target.style.display = "";
+        text.innerHTML = "Sembunyikan";
+    }else{
+        target.style.display = "none";
+        text.innerHTML = "Tampilkan";
+    }
+
+}
+
+function pilihKategori(btn,kategori){
+
+document
+.querySelectorAll("#kategoriMenu button")
+.forEach(b=>b.classList.remove("active"));
+
+btn.classList.add("active");
+
+showProduk(kategori);
+
+}
+
+function showPremium(kategori){
+
+let data = premiumData[kategori] || [];
+
+let html = '<div id="produkGrid">';
+
+data.forEach(item=>{
+
+const tersedia = item.stok == "1";
+
+const warnaHeader = tersedia ? "#16a34a" : "#8a8a8a";
+const warnaButton = tersedia ? "#25D366" : "#999";
+
+html += `
+
+<div class="card">
+
+<div class="top" style="background:${warnaHeader}">
+    <h2>${item.harga}</h2>
+
+    <p style="
+        margin-top:5px;
+        font-size:12px;
+        font-weight:bold;
+    ">
+        ${tersedia ? 'Tersedia' : 'Kosong'}
+    </p>
+</div>
+
+    <div class="content">
+<div style="
+font-size:18px;
+line-height:1.3;
+min-height:50px;
+font-weight:700;
+text-align:center;
+margin-bottom:10px;
+">
+${item.nama}
+</div>
+
+<div class="premium-desc">
+${item.deskripsi || ''}
+</div>
+
+<a
+href="javascript:void(0)"
+onclick="orderPremium('${item.nama}','${item.harga}')"
+class="wa-btn"
+style="
+background:${warnaButton};
+pointer-events:${tersedia ? 'auto' : 'none'};
+">
+    ${tersedia ? '🛒 Klik Order' : '❌ Stok Kosong'}
+</a>
+
+    </div>
+
+</div>
+
+`;
+
+});
+
+html += '</div>';
+
+document.getElementById('premiumContainer').innerHTML = html;
+
+}
+function orderOperatorProduk(kategori, kuota, harga){
+
+let nomor = prompt(
+"Masukkan nomor yang akan diisi:"
+);
+
+if(!nomor) return;
+
+if(!/^\d+$/.test(nomor)){
+    alert("Hanya boleh angka!");
+    return;
+}
+
+if(!nomor) return;
+
+const pesan =
+`ORDER ALL OPERATOR
+Nomor : ${nomor}
+Kategori : ${kategori.toUpperCase()}
+Kuota : ${kuota}
+Harga : ${harga}`;
+
+window.location.href =
+`whatsapp://send?phone=6285815633781&text=${encodeURIComponent(pesan)}`;
+
+}
+function orderPremium(nama,harga){
+
+const pesan =
+`ORDER AKUN PREMIUM
+Produk : ${nama}
+Harga : ${harga}`;
+
+window.open(
+`https://wa.me/6285815633781?text=${encodeURIComponent(pesan)}`,
+'_blank'
+);
+
+}
+
+document.getElementById(
+"privateResult"
+).innerHTML = privateHTML;
+</script>
+
+</div>
+</div>
+
+<script>
+
+let nomorOrder = "";
+let paketDipilih = "";
+let tipeOrder = "";
+
+function kirimNomor(){
+
+    const nomor = document
+    .getElementById("inputNomor")
+    .value
+    .trim();
+
+    if(!nomor){
+        alert("Masukkan nomor terlebih dahulu");
+        return;
+    }
+
+    if(!/^\d+$/.test(nomor)){
+        alert("Hanya boleh angka!");
+        return;
+    }
+
+    nomorOrder = nomor;
+
+    document.getElementById(
+        "popupNomor"
+    ).style.display = "none";
+
+    const pesan =
+`Order
+Nomor: ${nomorOrder}
+${tipeOrder}: ${paketDipilih}`;
+
+    window.location.href =
+`https://wa.me/6285815633781?text=${encodeURIComponent(pesan)}`;
+}
+function updateJam(){
+
+    const now = new Date();
+
+    const waktuWIB = new Date(
+        now.toLocaleString("en-US", {
+            timeZone: "Asia/Jakarta"
+        })
+    );
+
+    const jam = String(waktuWIB.getHours()).padStart(2,'0');
+    const menit = String(waktuWIB.getMinutes()).padStart(2,'0');
+    const detik = String(waktuWIB.getSeconds()).padStart(2,'0');
+
+    document.getElementById("jamRealtime").innerHTML =
+    `${jam}:${menit}:${detik} WIB`;
+}
+
+setInterval(updateJam,1000);
+updateJam();
+</script>
+<footer class="copyright">
+    © 2026 MeliStore - All Rights Reserved
+</footer>
+
+<div id="floatingNote">
+ <span> 📢 Informasi Pengisian Paket: Jika stok habis, silakan gunakan fitur 📝 Pre-Order saat status dibuka oleh admin. Pengisian dimulai setiap hari pukul 06.00 WIB sampai stok habis dengan prioritas pengisian: 1️⃣ umum v1, 2️⃣ privat, 3️⃣ Umum V2. Terima kasih telah transaksi di MeliStore ❤️
+    </span>
+</div>
+</div>
+</body>
+</html>
