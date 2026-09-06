@@ -2233,7 +2233,7 @@ try{
 const nomor = formatNomor(nomorInput);
 
 const res = await fetchWithRetry(
-`https://sidompul.ciamxl.workers.dev/sidompul?nomor=${encodeURIComponent(nomor)}`
+`https://reseller.axiestore.com/sidompul?nomor=${encodeURIComponent(nomor)}`
 );
 const info = res.data?.subs_info || {};
 const packageInfo = res.data?.package_info || {};
