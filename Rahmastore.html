@@ -1048,6 +1048,7 @@ const produkAktif = {
     XDA63:1,
     XDA65:1,
     XDA76:1,
+    P:1,
 };
 /* =========================
    TAMPIL varian
@@ -1133,6 +1134,7 @@ const preOrderUmumAktif = {
     XLA89:"b",
   /*jumbo*/
     XLA65:"b",
+    P:"b",
 
   
 
@@ -1308,7 +1310,13 @@ XLA48:{
     Area2:"65GB",
     Area3:"70GB",
     Area4:"80GB"
-  }
+  },
+    P:{
+        Area1:"50GB",
+        Area2:"52GB",
+        Area3:"57GB",
+        Area4:"67GB"
+},
 
 };
 
@@ -1410,6 +1418,7 @@ XL AXIS AKRAB
 'XDA65':'115K',
 'XLA48':'80K',
 'XLA55':'90K',
+            'P':'85K',
 })[nama] || nama}</h2>
           <p>STOCK : ${stok}</p>
 
@@ -1462,6 +1471,7 @@ onclick="orderPaket('${({
 'XDA65':'115K',
 'XLA48':'80K',
 'XLA55':'90K',
+    'P':'85K',
 })[nama] || nama}')"
 class="wa-btn"
 style="
@@ -1513,6 +1523,9 @@ onclick="preOrderUmum('${({
 'XDA65':'115K',
 'XLA48':'80K',
 'XLA55':'90K',
+
+'P':'85K',
+    
 })[nama] || nama}')"
 class="wa-btn"
 style="
@@ -1551,6 +1564,8 @@ onclick="preOrderUmum('${({
 'XDA65':'115K',
 'XLA48':'80K',
 'XLA55':'90K',
+
+'P':'85K',
 })[nama] || nama}')"
 class="wa-btn"
 style="
